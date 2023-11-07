@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;200;300;400;500;600;700;800&display=swap');
+body{
+    font-family: 'Playpen Sans', cursive;
+
+}
+nav{
+    border: none;
+}
+.logo{
+    font-size: 25px;
+    display: flex;
+    cursor: auto;
+}
+.logo span{
+    font-weight: bold;
+    padding-top: 24px;
+}
+.logo-img{
+    width: 85px;
+    height: 70px;
+}
+
+header{
+    height: 800px;
+    background-image: url("/images/16559127940_0e765c64c3_b.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 100px;
+}
+.header-content{
+    padding: 150px;
+}
+.heading{
+    font-size: 50px;
+}
+.dropdown-item:hover{
+    text-decoration: underline;
+}
+.text-header{
+    color: white;
+}
+.text-header p {
+    font-size: 28px;
+    width: 400px;
+    margin-bottom: 30px;
+    margin-top: 18px;
+}
+.genres-section{
+    margin-bottom: 90px;
+}
+.btn-contact{
+    background-color: darkturquoise;
+}
+.btn-contact:hover{
+    color: black;
+}
+body{
+    background-image: url("/images/16559127940_0e765c64c3_b.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.fa-book{
+    color: lightgray;
+    font-size: 24px;
+}
+.books{
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+}
+.card-img{
+    height: 500px;
+}
+.genres{
+    height: 300px;
+    background-color:#88c0cb;
+}
+.best-selling{
+    background-color: transparent;
+    border: none;
+}
+.link-genre{
+    color: black;
+    text-decoration: none;
+}
+.link-genre:hover{
+    color: red;
+}
+.icon{
+    font-size: 50px;
+}
+.best-selling{
+    max-height: 510px;
+    background-color: #78b1808e;
+    margin:130px auto;
+
+}
+.best-selling-img{
+    max-height: 510px;
+}
+.genres-section{
+    width: 90%;
+    margin: auto;
+}
+.why-vlibrary {
+    background-color: #78b1808e;
+    width: 75%;
+    height: 600px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 100px;
+    margin-top: 80px;
+}
+.why {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    color: black;
+    width: 30%;
+    text-align: center;
+    align-items: center;
+}
+.why button {
+    align-self: center;
+    margin: 10px;
+}
+
+.why h2 {
+    font-size: 36px;
+}
+
+.footer-info{
+    display: flex;
+    flex-direction: column;
+}
+.footer{
+    margin-top: 30px;
+
+    padding: 20px;
+    border-radius: 0%;
+}
+.logo-footer{
+    align-self: center;
+    margin-bottom: 16px;
+}
+.follow-us h5{
+    font-size: 26px;
+}
+.follow-us i{
+    font-size: 28px;
+    padding-right: 6px;
+    margin-bottom: 14px;
+}
+.follow-us i:hover{
+    color: black;
+}
+.form-check{
+    font-size: 18px;
+    color: white;
+}
+.add-book-btn{
+    margin-top: 18px;
+}
+.all-books{
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+.book{
+    background-color: rgb(177, 223, 205);
+    display: flex;
+    flex-direction: column-reverse;
+    width: 80%;
+    margin: auto;
+    border-radius: 8px;
+    height: 640px;
+}
+.img-book{
+    overflow: hidden;
+    width: 100%
+}
+.img-book img{
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.book-info{
+    padding: 18px 30px;
+}
+.genre-heading{
+    font-weight: normal;
+}
+.book-info p{
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.buy-btn:hover{
+    background-color: white;
+    color: black;
+}
+.all-books-info{
+    background-color: #cbfdd2;
+}
+.profile-section{
+    background-color: #cbfdd2;
+    border-radius: 10px;
+    text-align: center;
+    width: 40%;
+    height: 580px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 30px;
+}
+.user-img img{
+    width: 80px;
+    height: 80px;
+    margin: auto;
+}
+.profile-info{
+    width: 75%;
+    margin: auto;
+    margin-top: 20px;
+}
+.profile-info span{
+    font-size: 20px;
+}
+.user-info{
+    font-size: 20px;
+    margin-top: 10px;
+}
+.social-media i{
+    margin-top: 12px;
+    padding-right: 6px;
+    font-size: 24px;
+}
+.social-media i:hover{
+    color: rgb(114, 111, 111);
+}
+.btn-back{
+    margin-top: 16px;
+}
+.profile{
+    background-color: #78b180;
+}
+.about-us-section{
+    background-color: #78b180;
+    width: 60%;
+    margin: auto;
+    padding: 40px;
+    border-radius: 8px;
+    margin-top: 50px;
+}
+.about-us-section h2{
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.about-us-section p{
+    font-size: 20px;
+    line-height: 34px;
+}
+.contact-section{
+    background-color: white;
+    width: 45%;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0px 1px 11px 0px black;
+    padding: 60px;
+    display: flex;
+    gap: 40px;
+    margin-top: 50px;
+}
+.contact-section p{
+    font-size: 20px;
+}
