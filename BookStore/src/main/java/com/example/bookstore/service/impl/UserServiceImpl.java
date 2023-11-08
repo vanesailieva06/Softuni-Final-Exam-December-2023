@@ -1,14 +1,15 @@
 package com.example.bookstore.service.impl;
 
 import com.example.bookstore.model.dto.UserRegisterDto;
+import com.example.bookstore.model.dto.UserViewDto;
 import com.example.bookstore.model.entity.Role;
 import com.example.bookstore.model.entity.User;
 import com.example.bookstore.model.entity.enums.AudienceType;
 import com.example.bookstore.model.entity.enums.RoleType;
 import com.example.bookstore.repository.RoleRepository;
 import com.example.bookstore.repository.UserRepository;
-import com.example.bookstore.service.RoleService;
 import com.example.bookstore.service.UserService;
+import com.example.bookstore.util.CurrentUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,6 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
-
     public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
@@ -44,7 +44,12 @@ public class UserServiceImpl implements UserService {
         } else{
             user.setAudienceType(AudienceType.ADULT);
         }
-
         userRepository.save(user);
+    }
+
+    @Override
+    public UserViewDto findById(Long id) {
+        User user = userRepository.findById(id).orElse(null);
+        return modelMapper.map(user, UserViewDto.class);
     }
 }

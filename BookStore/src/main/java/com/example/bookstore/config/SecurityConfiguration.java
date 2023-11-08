@@ -20,11 +20,11 @@ public class SecurityConfiguration {
                 authorizeRequests ->
                         authorizeRequests.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         // Allow anyone to see the home page, the registration page and the login form
-                        .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
-                        .requestMatchers("/offers/all").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/offer/**").permitAll()
-                        .requestMatchers("/error").permitAll()
-                        .requestMatchers("/brands").hasRole(RoleType.ADMIN.name())
+                        .requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/about"
+                        ,"/contacts").permitAll()
+                        .requestMatchers("/books/all").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/books/**").permitAll()
+//                        .requestMatchers("/error").permitAll()
                         // all other requests are authenticated.
                         .anyRequest().authenticated()
         )

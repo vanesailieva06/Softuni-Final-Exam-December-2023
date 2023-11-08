@@ -81,22 +81,27 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/books/add}"
+            <a class="nav-link active" aria-current="page" th:href="@{/book/add}"
             >Add Book</a
             >
           </li>
           <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/offers/add}"
+            >Add Offer</a
+            >
+          </li>
+          <li class="nav-item">
             <a class="nav-link active" aria-current="page" th:href="@{/cart}"
-            >Cart</a
+            >Cart({})</a
             >
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" th:href="@{/books/favourites}"
-            >Favourites</a
+            >Favourites({})</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/user/profile}"
+            <a class="nav-link active" aria-current="page" th:href="@{/users/profile/{id}(id = ${@currentUser.id})}"
             >Profile</a
             >
           </li>

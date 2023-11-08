@@ -8,81 +8,83 @@
 
       </nav>
     <h1 class="mb-5 mt-3 text-center text-white">Add Book</h1>
-    <form class="w-25 m-auto">
+    <form class="w-25 m-auto" th:method="post"
+    th:action="@{/book/add}"
+    th:object="${bookAddDto}">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label text-white">Title</label>
-          <input type="text" class="form-control" id="exampleInputTitle1">
+          <label for="title" class="form-label text-white">Title</label>
+          <input name="title" type="text" class="form-control" id="title" th:field="*{title}">
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label text-white">Author</label>
-          <input type="text" class="form-control" id="exampleInputFullName1">
+          <label for="author" class="form-label text-white">Author</label>
+          <input type="text" class="form-control" id="author" name="author" th:field="*{author}">
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label text-white">Summary</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+          <label for="summary" class="form-label text-white">Summary</label>
+          <textarea class="form-control" id="summary" name="summary" rows="5" th:field="*{summary}"></textarea>
         </div>
+
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label text-white">Price</label>
-            <input type="number" class="form-control" id="exampleInputAge1" min="0">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label text-white">Select Audience Type</label>
-            <select class="form-select" aria-label="Default select example">
-            <option selected>Select Audience Type</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <label for="audienceType" class="form-label text-white">Select Audience Type</label>
+            <select th:field="*{audienceType}"  class="form-select" aria-label="Default select example" id="audienceType"
+            >
+            <option selected value=" ">Select Audience Type</option>
+            <option th:each="audience : ${T(com.example.bookstore.model.entity.enums.AudienceType).values()}" th:value="${audience}" th:text="${audience}">One</option>
           </select>
           </div>
-          
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Science Fiction
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Romance
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Horror
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Fantasy
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Thriller
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              History
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Action
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Comedy
-            </label>
-          </div>
+
+        <div class="mb-3">
+            <div class="form-group p-3 checkboxGenre">
+
+                <label class="p-2" for="genres">Genres:</label>
+                <input class="m-3" type="checkbox" th:field="*{genres}"
+                       th:each="g : ${T(com.example.bookstore.model.entity.enums.GenreType).values()}" id="genres"
+                       th:value="${g}" th:text="${g}">
+                <br>
+            </div>
+        </div>
+<!--          <div class="form-check">-->
+<!--            <input class="form-check-input" type="checkbox" value="" id="romance" checked>-->
+<!--            <label class="form-check-label" for="romance">-->
+<!--              Romance-->
+<!--            </label>-->
+<!--          </div>-->
+<!--          <div class="form-check">-->
+<!--            <input class="form-check-input" type="checkbox" value="" id="horror" checked>-->
+<!--            <label class="form-check-label" for="horror">-->
+<!--              Horror-->
+<!--            </label>-->
+<!--          </div>-->
+<!--          <div class="form-check">-->
+<!--            <input class="form-check-input" type="checkbox" value="" id="fantasy" checked>-->
+<!--            <label class="form-check-label" for="fantasy">-->
+<!--              Fantasy-->
+<!--            </label>-->
+<!--          </div>-->
+<!--          <div class="form-check">-->
+<!--            <input class="form-check-input" type="checkbox" value="" id="thriller" checked>-->
+<!--            <label class="form-check-label" for="thriller">-->
+<!--              Thriller-->
+<!--            </label>-->
+<!--          </div>-->
+<!--          <div class="form-check">-->
+<!--            <input class="form-check-input" type="checkbox" value="" id="history" checked>-->
+<!--            <label class="form-check-label" for="history">-->
+<!--              History-->
+<!--            </label>-->
+<!--          </div>-->
+<!--          <div class="form-check">-->
+<!--            <input class="form-check-input" type="checkbox" value="" id="action" checked>-->
+<!--            <label class="form-check-label" for="action">-->
+<!--              Action-->
+<!--            </label>-->
+<!--          </div>-->
+<!--          <div class="form-check">-->
+<!--            <input class="form-check-input" type="checkbox" value="" id="comedy" checked>-->
+<!--            <label class="form-check-label" for="comedy">-->
+<!--              Comedy-->
+<!--            </label>-->
+<!--          </div>-->
         <button type="submit" class="btn btn-primary btn-lg add-book-btn">Submit</button>
       </form>
 

@@ -2,20 +2,20 @@ package com.example.bookstore.web;
 
 import com.example.bookstore.model.dto.UserRegisterDto;
 import com.example.bookstore.service.UserService;
+import com.example.bookstore.util.CurrentUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
+    private final CurrentUser currentUser;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, CurrentUser currentUser) {
         this.userService = userService;
+        this.currentUser = currentUser;
     }
 
     @GetMapping("/login")
@@ -47,6 +47,13 @@ public class UserController {
 
         return "login";
     }
+
+    @GetMapping("/profile/{id}")
+    public String profile(@PathVariable Long id, Model model){
+        model.addAttribute("user", userService.findById(id));
+        return "profile";
+    }
+
 }
 
 

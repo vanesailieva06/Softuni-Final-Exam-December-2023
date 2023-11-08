@@ -12,18 +12,18 @@
           alt=""
         />
       </div>
-      <div class="profile-info">
+      <div class="profile-info" th:object="${user}">
         <div class="full-name-info">
           <h3 class="full-name-heading">Full Name</h3>
-          <span class="full-name">Vanesa Ilieva</span>
+          <span class="full-name" th:text = "*{fullName}">Vanesa Ilieva</span>
         </div>
         <div class="username-info">
           <h3 class="username-heading">Username</h3>
-          <span class="username">Vanesa06</span>
+          <span class="username" th:text="*{username}">Vanesa06</span>
         </div>
         <div class="age-info">
           <h3 class="age-heading">Age</h3>
-          <span class="age">20</span>
+          <span class="age" th:text="*{age}">20</span>
         </div>
         <div class="user-info">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
@@ -38,7 +38,6 @@
             <i class="fa-brands fa-linkedin"></i>
         </div>
 
-        <button type="button" class="btn btn-primary btn-lg btn-back">Back</button>
       </div>
     </section>
 
