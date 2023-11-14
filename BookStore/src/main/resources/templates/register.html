@@ -7,30 +7,48 @@
       </nav>
     <h1 class="mb-5 mt-3 text-center text-white">Register</h1>
     <form class="w-25 m-auto" th:method = "post"
-    th:action = "@{/users/register}">
+    th:action = "@{/users/register}" th:object="${userRegisterDto}">
         <div class="mb-3">
           <label for="username" class="form-label text-white">Username</label>
           <input name = "username" type="text" class="form-control" id="username">
+            <p class="errors alert alert-danger"  th:if="${#fields.hasErrors('username')}"
+               th:errors="*{username}">
+            </p>
         </div>
         <div class="mb-3">
           <label for="fullName" class="form-label text-white">Full Name</label>
           <input  name = "fullName" type="text" class="form-control" id="fullName">
+            <p class="errors alert alert-danger"  th:if="${#fields.hasErrors('fullName')}"
+               th:errors="*{fullName}">
+            </p>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label text-white">Email</label>
             <input name = "email" type="email" class="form-control" id="email">
-          </div>
+            <p class="errors alert alert-danger"  th:if="${#fields.hasErrors('email')}"
+               th:errors="*{email}">
+            </p>
+        </div>
           <div class="mb-3">
             <label for="age" class="form-label text-white">Age</label>
             <input name = "age" type="number" class="form-control" id="age" min="0" max="92">
+              <p class="errors alert alert-danger"  th:if="${#fields.hasErrors('age')}"
+                 th:errors="*{age}">
+              </p>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label text-white">Password</label>
             <input  name = "password" type="password" class="form-control" id="password">
+              <p class="errors alert alert-danger"  th:if="${#fields.hasErrors('password')}"
+                 th:errors="*{password}">
+              </p>
           </div>
         <div class="mb-3">
-            <label for="confirmPassword" class="form-label text-white">Password</label>
+            <label for="confirmPassword" class="form-label text-white">Confirm Password</label>
             <input  name = "confirmPassword" type="password" class="form-control" id="confirmPassword">
+            <p class="errors alert alert-danger"  th:if="${#fields.hasErrors('confirmPassword')}"
+               th:errors="*{confirmPassword}">
+            </p>
         </div>
         <button type="submit" class="btn btn-primary btn-lg">Register</button>
       </form>

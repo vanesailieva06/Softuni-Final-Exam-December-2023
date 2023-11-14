@@ -114,8 +114,8 @@ body{
     margin: auto;
     margin-bottom: 100px;
     margin-top: 80px;
-}
-.why {
+  }
+  .why {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -125,21 +125,21 @@ body{
     width: 30%;
     text-align: center;
     align-items: center;
-}
-.why button {
+  }
+  .why button {
     align-self: center;
     margin: 10px;
-}
-
-.why h2 {
+  }
+  
+  .why h2 {
     font-size: 36px;
-}
+  }
 
-.footer-info{
+  .footer-info{
     display: flex;
     flex-direction: column;
-}
-.footer{
+  }
+  .footer{
     margin-top: 30px;
 
     padding: 20px;
@@ -170,8 +170,8 @@ body{
 .all-books{
     margin-top: 70px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 30px;
 }
 .book{
     background-color: rgb(177, 223, 205);
@@ -197,9 +197,6 @@ body{
 .genre-heading{
     font-weight: normal;
 }
-.checkboxGenre label{
-    display: block;
-}
 .book-info p{
     font-size: 20px;
     margin-bottom: 10px;
@@ -215,7 +212,7 @@ body{
 .profile-section{
     background-color: #cbfdd2;
     border-radius: 10px;
-    text-align: center;
+   text-align: center;
     width: 40%;
     height: 580px;
     margin: auto;
@@ -283,4 +280,28 @@ body{
 }
 .contact-section p{
     font-size: 20px;
+}
+.cart{
+    width: 80%;
+    margin: auto;
+}
+.books-in{
+    margin-bottom: 50px;
+}
+.buy-all-div button{
+    width: 70%;
+    margin: auto;
+}
+.cart-heading{
+    font-size: 55px;
+    text-align: center;
+    margin: 60px 0;
+}
+.books-in p{
+    margin-bottom: 16px;
+}
+.broken-car{
+    height: 770px;
+    width: 700px;
+    margin: auto;
 }

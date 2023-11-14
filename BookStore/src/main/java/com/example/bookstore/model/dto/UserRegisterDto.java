@@ -1,9 +1,6 @@
 package com.example.bookstore.model.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 public class UserRegisterDto {
     private String username;
@@ -16,8 +13,8 @@ public class UserRegisterDto {
     public UserRegisterDto() {
     }
 
-    @NotNull
-    @Size(min = 2, max = 25)
+    @NotNull(message = "Required username")
+    @Size(min = 2, max = 25, message = "Username must be between 2 and 25 characters")
     public String getUsername() {
         return username;
     }
@@ -26,7 +23,7 @@ public class UserRegisterDto {
         this.username = username;
     }
 
-    @NotNull
+    @NotBlank(message = "Required full name")
     public String getFullName() {
         return fullName;
     }
@@ -35,7 +32,7 @@ public class UserRegisterDto {
         this.fullName = fullName;
     }
 
-    @NotNull
+    @NotBlank(message = "Required email")
     @Email
     public String getEmail() {
         return email;
@@ -45,8 +42,8 @@ public class UserRegisterDto {
         this.email = email;
     }
 
-    @NotNull
-    @Positive
+    @NotNull(message = "Required age")
+    @Positive()
     public Integer getAge() {
         return age;
     }
@@ -55,8 +52,8 @@ public class UserRegisterDto {
         this.age = age;
     }
 
-    @NotNull
-    @Size(min = 4, max = 20)
+    @NotNull(message = "Required password")
+    @Size(min = 4, max = 20, message = "Password must be between 4 and 20 characters")
     public String getPassword() {
         return password;
     }
@@ -65,8 +62,8 @@ public class UserRegisterDto {
         this.password = password;
     }
 
-    @NotNull
-    @Size(min = 4, max = 20)
+    @NotNull(message = "Required password")
+    @Size(min = 4, max = 20, message = "Password must be between 4 and 20 characters")
     public String getConfirmPassword() {
         return confirmPassword;
     }

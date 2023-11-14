@@ -14,10 +14,16 @@
         <div class="mb-3">
           <label for="title" class="form-label text-white">Title</label>
           <input name="title" type="text" class="form-control" id="title" th:field="*{title}">
+            <p class="errors alert alert-danger"  th:if="${#fields.hasErrors('title')}"
+               th:errors="*{title}">
+            </p>
         </div>
         <div class="mb-3">
           <label for="author" class="form-label text-white">Author</label>
           <input type="text" class="form-control" id="author" name="author" th:field="*{author}">
+            <p class="errors alert alert-danger"  th:if="${#fields.hasErrors('author')}"
+               th:errors="*{author}">
+            </p>
         </div>
         <div class="mb-3">
           <label for="summary" class="form-label text-white">Summary</label>
@@ -31,6 +37,9 @@
             <option selected value=" ">Select Audience Type</option>
             <option th:each="audience : ${T(com.example.bookstore.model.entity.enums.AudienceType).values()}" th:value="${audience}" th:text="${audience}">One</option>
           </select>
+              <p class="errors alert alert-danger"  th:if="${#fields.hasErrors('audienceType')}"
+                 th:errors="*{audienceType}">
+              </p>
           </div>
 
         <div class="mb-3">
@@ -41,7 +50,11 @@
                        th:each="g : ${T(com.example.bookstore.model.entity.enums.GenreType).values()}" id="genres"
                        th:value="${g}" th:text="${g}">
                 <br>
+
             </div>
+            <p class="errors alert alert-danger"  th:if="${#fields.hasErrors('genres')}"
+                      th:errors="*{genres}">
+        </p>
         </div>
 <!--          <div class="form-check">-->
 <!--            <input class="form-check-input" type="checkbox" value="" id="romance" checked>-->

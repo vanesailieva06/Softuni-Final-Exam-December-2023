@@ -10,12 +10,13 @@ import java.util.Set;
 @Table(name = "books")
 public class Book extends BaseEntity{
     private String title;
-    private BigDecimal price;
     private String summary;
     private AudienceType audienceType;
     private Set<Genre> genres;
     private Author author;
-
+    private Set<Offer> offers;
+    private boolean addedInCart;
+    private boolean isFavourite;
 
     public Book() {
     }
@@ -29,14 +30,6 @@ public class Book extends BaseEntity{
         this.title = title;
     }
 
-    @Column(nullable = false)
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
 
     @Column(columnDefinition = "TEXT")
     public String getSummary() {
@@ -56,7 +49,7 @@ public class Book extends BaseEntity{
         this.audienceType = audienceType;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     public Set<Genre> getGenres() {
         return genres;
     }
@@ -72,5 +65,30 @@ public class Book extends BaseEntity{
 
     public void setAuthor(Author author) {
         this.author = author;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "book")
+    public Set<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(Set<Offer> offers) {
+        this.offers = offers;
+    }
+
+    public boolean isAddedInCart() {
+        return addedInCart;
+    }
+
+    public void setAddedInCart(boolean addedInCart) {
+        this.addedInCart = addedInCart;
+    }
+
+    public boolean isFavourite() {
+        return isFavourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
     }
 }

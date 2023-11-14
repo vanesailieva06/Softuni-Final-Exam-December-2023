@@ -6,45 +6,27 @@
     <nav th:replace = "commons/fragments::nav">
     </nav>
 
-    <section class="all-books">
-      <div class="book">
+    <section class="all-books" >
+      <div class="book" th:each="offer : ${offers}" th:object="${offer}">
         <div class="book-info">
-            <h2 class="title-heading">Example Heading</h2>
-        <h3 class="author-heading">Example author</h3>
-        <h4 class="genre-heading">Example genre</h4>
-        <p class="summary-book">
+            <h2 class="title-heading" th:text="*{bookTitle}">Example Heading</h2>
+        <h3 class="author-heading" th:text="*{author}">Example author</h3>
+        <h4 class="genre-heading" th:each="genre : *{genres}" th:text="${genre}">Example genre</h4>
+        <p class="summary-book" th:text="*{summary}">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel magni
           vero nostrum temporibus enim dolore, quae facere error repudiandae a
           deleniti minima nisi expedita animi praesentium at assumenda autem
           ratione? Quasi placeat corporis laboriosam, id perferendis repudiandae
           ab magni 
         </p>
-        <p class="price">10.00$</p>
-        <button type="button" class="btn btn-dark btn-lg buy-btn">Buy</button>
+        <p class="price" th:text="|*{price}$|"></p>
+        <a th:href="@{/cart/add/{id}(id = *{bookId})}" class="btn btn-dark btn-lg buy-btn">Add to cart</a>
         </div>
         <div class="img-book">
             <img src="/images/default.avif" alt="img-book">
         </div>
       </div>
-      <div class="book">
-        <div class="book-info">
-            <h2 class="title-heading">Example Heading</h2>
-        <h3 class="author-heading">Example author</h3>
-        <h4 class="genre-heading">Example genre</h4>
-        <p class="summary-book">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel magni
-          vero nostrum temporibus enim dolore, quae facere error repudiandae a
-          deleniti minima nisi expedita animi praesentium at assumenda autem
-          ratione? Quasi placeat corporis laboriosam, id perferendis repudiandae
-          ab magni 
-        </p>
-        <p class="price">10.00$</p>
-        <button type="button" class="btn btn-dark btn-lg buy-btn">Buy</button>
-        </div>
-        <div class="img-book">
-            <img src="/images/default.avif" alt="img-book">
-        </div>
-      </div>
+
     </section>
     <footer th:replace = "commons/fragments::footer"></footer>
     <script

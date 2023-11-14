@@ -2,6 +2,7 @@ package com.example.bookstore.service.impl;
 
 import com.example.bookstore.model.dto.UserRegisterDto;
 import com.example.bookstore.model.dto.UserViewDto;
+import com.example.bookstore.model.entity.Book;
 import com.example.bookstore.model.entity.Role;
 import com.example.bookstore.model.entity.User;
 import com.example.bookstore.model.entity.enums.AudienceType;
@@ -36,14 +37,6 @@ public class UserServiceImpl implements UserService {
         Role role = new Role();
         role.setRoleType(RoleType.USER);
         roleRepository.save(role);
-        user.setRoles(Set.of(role));
-        if (user.getAge() <= 12){
-            user.setAudienceType(AudienceType.KIDS);
-        } else if (user.getAge() <= 19) {
-            user.setAudienceType(AudienceType.TEENAGERS);
-        } else{
-            user.setAudienceType(AudienceType.ADULT);
-        }
         userRepository.save(user);
     }
 
@@ -51,5 +44,11 @@ public class UserServiceImpl implements UserService {
     public UserViewDto findById(Long id) {
         User user = userRepository.findById(id).orElse(null);
         return modelMapper.map(user, UserViewDto.class);
+    }
+
+    @Override
+    public User findByUsername(String username) {
+
+        return userRepository.findByUsername(username).orElseThrow();
     }
 }

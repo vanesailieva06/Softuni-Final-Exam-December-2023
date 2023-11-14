@@ -2,10 +2,7 @@ package com.example.bookstore.model.dto;
 
 import com.example.bookstore.model.entity.enums.AudienceType;
 import com.example.bookstore.model.entity.enums.GenreType;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -14,7 +11,6 @@ public class BookAddDto {
     private String title;
     private String author;
     private String summary;
-    private BigDecimal price;
     private AudienceType audienceType;
     private List<GenreType> genres;
 
@@ -22,7 +18,7 @@ public class BookAddDto {
     }
 
     @NotNull
-    @Size(min = 2, max = 40)
+    @Size(min = 2, max = 40, message = "Title must be between 2 and 40 characters")
     public String getTitle() {
         return title;
     }
@@ -31,8 +27,7 @@ public class BookAddDto {
         this.title = title;
     }
 
-    @NotNull
-    @Size(min = 2, max = 50)
+    @NotBlank(message = "Required author")
     public String getAuthor() {
         return author;
     }
@@ -50,17 +45,8 @@ public class BookAddDto {
         this.summary = summary;
     }
 
-    @Positive
-    @NotNull
-    public BigDecimal getPrice() {
-        return price;
-    }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    @NotNull
+    @NotNull(message = "Required audience type")
     public AudienceType getAudienceType() {
         return audienceType;
     }
@@ -69,7 +55,7 @@ public class BookAddDto {
         this.audienceType = audienceType;
     }
 
-    @NotNull
+    @NotNull(message = "Required genres")
     public List<GenreType> getGenres() {
         return genres;
     }

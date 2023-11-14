@@ -38,7 +38,7 @@ public class BookController {
         }
         bookService.addBook(bookAddDto);
 
-        return "redirect:/books/all";
+        return "redirect:/";
     }
     @ModelAttribute
     public BookAddDto bookAddDto(){

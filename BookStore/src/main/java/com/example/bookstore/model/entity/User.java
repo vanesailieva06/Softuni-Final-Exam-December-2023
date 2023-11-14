@@ -13,7 +13,6 @@ public class User extends BaseEntity{
     private Integer age;
     private String password;
     private String email;
-    private AudienceType audienceType;
     private Set<Role> roles;
     public User() {
     }
@@ -63,14 +62,6 @@ public class User extends BaseEntity{
         this.email = email;
     }
 
-    @Enumerated(EnumType.STRING)
-    public AudienceType getAudienceType() {
-        return audienceType;
-    }
-
-    public void setAudienceType(AudienceType audienceType) {
-        this.audienceType = audienceType;
-    }
 
     @ManyToMany(fetch = FetchType.EAGER)
     public Set<Role> getRoles() {

@@ -22,9 +22,9 @@ public class SecurityConfiguration {
                         // Allow anyone to see the home page, the registration page and the login form
                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/about"
                         ,"/contacts").permitAll()
-                        .requestMatchers("/books/all").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/books/**").permitAll()
-//                        .requestMatchers("/error").permitAll()
+//                        .requestMatchers(HttpMethod.GET, "/offer/**").permitAll() authenticated
+                        .requestMatchers("/error").permitAll()
+                                .requestMatchers("/book/add").hasRole(RoleType.ADMIN.name())
                         // all other requests are authenticated.
                         .anyRequest().authenticated()
         )
