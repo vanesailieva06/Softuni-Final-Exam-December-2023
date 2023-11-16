@@ -22,7 +22,7 @@ public class Offer extends BaseEntity {
         this.price = price;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     public Book getBook() {
         return book;
     }

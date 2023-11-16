@@ -1,9 +1,7 @@
 package com.example.bookstore.web;
 
 import com.example.bookstore.model.dto.UserRegisterDto;
-import com.example.bookstore.repository.UserRepository;
 import com.example.bookstore.service.UserService;
-import com.example.bookstore.util.CurrentUser;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
+
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -51,7 +50,7 @@ public class UserController {
         return "redirect:login";
     }
 
-    @ModelAttribute
+    @ModelAttribute("register")
     public UserRegisterDto userRegisterDto(Model model){
         return new UserRegisterDto();
     }

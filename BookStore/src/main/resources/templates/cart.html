@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head th:replace="commons/fragments::head">
   </head>
   <body class="cart">
@@ -10,7 +10,7 @@
     <main>
         <h1 class="cart-heading">CART</h1>
       <section class="books-in">
-        <div class="card" style="width: 460px" th:each="book : ${addedBooks}" th:object="${book}">>
+        <div class="card" style="width: 600px" th:each="book : ${addedBooks}" th:object="${book}">
             <img src="/images/default.avif" class="card-img-top" alt="card-img">
             <div class="card-body">
               <h5 class="card-title" th:text="*{title}">Example title</h5>
@@ -18,13 +18,13 @@
                 Example author
               </h6>
               <p class="card-text" th:text="*{summary}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a th:href="@{/book/buy/{id}}" class="btn btn-primary" th:text="|Buy: *{price}|"></a>
+              <a th:href="@{/books/buy/{id}(id = *{id})}" class="btn btn-primary" th:text="|Buy: *{price}|"></a>
             </div>
           </div>
       </section>
       <div class="buy-all-div">
         <div class="d-grid">
-            <button class="btn btn-primary btn-lg" type="button">Buy All: {priceAll}</button>
+            <a class="btn btn-primary btn-lg btn-buy-all" th:href="@{/books/buy-all}" th:text="|Buy All: ${totalPrice}|">Buy All: {priceAll}</a>
           </div>
       </div>
 

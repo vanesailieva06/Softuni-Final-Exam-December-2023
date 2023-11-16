@@ -2,15 +2,12 @@ package com.example.bookstore.service.impl;
 
 import com.example.bookstore.model.dto.UserRegisterDto;
 import com.example.bookstore.model.dto.UserViewDto;
-import com.example.bookstore.model.entity.Book;
 import com.example.bookstore.model.entity.Role;
 import com.example.bookstore.model.entity.User;
-import com.example.bookstore.model.entity.enums.AudienceType;
 import com.example.bookstore.model.entity.enums.RoleType;
 import com.example.bookstore.repository.RoleRepository;
 import com.example.bookstore.repository.UserRepository;
 import com.example.bookstore.service.UserService;
-import com.example.bookstore.util.CurrentUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

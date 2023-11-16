@@ -48,6 +48,8 @@ public class OfferServiceImpl implements OfferService {
                     offersViewDto.setAuthor(book.getAuthor().getName());
                     offersViewDto.setGenres(book.getGenres().stream().map(Genre::getGenreType).collect(Collectors.toSet()));
                     offersViewDto.setSummary(book.getSummary());
+                    offersViewDto.setFavourites(book.isFavourite());
+                    offersViewDto.setAddedInCart(book.isAddedInCart());
                     return offersViewDto;
                 })
                 .collect(Collectors.toSet());

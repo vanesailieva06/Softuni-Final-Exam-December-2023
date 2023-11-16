@@ -25,8 +25,8 @@ public class OffersController {
         model.addAttribute("offers", offerService.getAllOffers());
         return "all-offers";
     }
-    @GetMapping("/cart/add/{id}")
-    public String addToCart(@PathVariable Long id){
+    @GetMapping("/cart/add-from-offers/{id}")
+    public String addToCartFromOffers(@PathVariable Long id){
         bookService.addToCart(id);
         return "redirect:/offers/all";
     }

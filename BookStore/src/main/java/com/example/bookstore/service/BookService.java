@@ -2,19 +2,17 @@ package com.example.bookstore.service;
 
 import com.example.bookstore.model.dto.BookAddDto;
 import com.example.bookstore.model.dto.BookInCartViewDto;
-import com.example.bookstore.model.dto.OffersViewDto;
+import com.example.bookstore.model.dto.BookViewDto;
 import com.example.bookstore.model.entity.Book;
-import com.example.bookstore.model.entity.Offer;
 
 import java.util.List;
-import java.util.Set;
 
 public interface BookService {
     void addBook(BookAddDto bookAddDto);
 
     Book findByTitle(String bookTitle);
 
-    List<Book> getAll();
+    List<BookViewDto> getAll();
 
 
     boolean isInCart(BookInCartViewDto bookDto);
@@ -23,4 +21,13 @@ public interface BookService {
     Book findById(Long id);
 
     List<BookInCartViewDto> findAllAddedInCart();
+
+    void addToFavourites(Long id);
+
+    List<BookViewDto> getBookFavourites();
+
+    void buyBook(Long id);
+
+    void buyAllBooks();
+
 }

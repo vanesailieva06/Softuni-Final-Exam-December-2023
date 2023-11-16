@@ -7,6 +7,7 @@ public class BookInCartViewDto {
     private String author;
     private String summary;
     private BigDecimal price;
+    private Long id;
 
     public BookInCartViewDto() {
     }
@@ -41,5 +42,13 @@ public class BookInCartViewDto {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

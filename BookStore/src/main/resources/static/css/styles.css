@@ -300,8 +300,26 @@ body{
 .books-in p{
     margin-bottom: 16px;
 }
+.books-in{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+}
+.after-buying{
+    width: 70%;
+    margin: 200px auto;
+    text-align: center;
+}
+.after-buying h1{
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+.btn-to-home{
+    font-size: 28px;
+    padding: 12px 24px;
+}
 .broken-car{
-    height: 770px;
     width: 700px;
+    height: 770px;
     margin: auto;
 }

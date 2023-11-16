@@ -18,9 +18,21 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     List<Book> findAllByAddedInCartIsTrue();
 
+    Optional<Book> findByIdAndAddedInCartIsTrue(Long id);
+
 
     @Modifying
     @Transactional
     @Query("UPDATE Book b SET b.addedInCart=true WHERE b=:book")
-    void updateBook(@Param(value = "book") Book book);
+    void updateBookAddedInCart
+            (@Param(value = "book") Book book);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Book b SET b.favourite=true WHERE b=:book")
+    void updateBookAddedInFavourites
+            (@Param(value = "book") Book book);
+
+
+    List<Book> findAllByFavouriteIsTrue();
 }

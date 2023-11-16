@@ -17,7 +17,7 @@ public class Book extends BaseEntity{
     private Set<Offer> offers;
     private boolean addedInCart;
     private boolean isFavourite;
-
+    private BigDecimal price;
     public Book() {
     }
 
@@ -67,7 +67,7 @@ public class Book extends BaseEntity{
         this.author = author;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "book")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "book", cascade = CascadeType.REMOVE)
     public Set<Offer> getOffers() {
         return offers;
     }
@@ -90,5 +90,13 @@ public class Book extends BaseEntity{
 
     public void setFavourite(boolean favourite) {
         isFavourite = favourite;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }

@@ -21,7 +21,7 @@ public class SecurityConfiguration {
                         authorizeRequests.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         // Allow anyone to see the home page, the registration page and the login form
                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/about"
-                        ,"/contacts").permitAll()
+                        ,"/contacts", "/books/all").permitAll()
 //                        .requestMatchers(HttpMethod.GET, "/offer/**").permitAll() authenticated
                         .requestMatchers("/error").permitAll()
                                 .requestMatchers("/book/add").hasRole(RoleType.ADMIN.name())

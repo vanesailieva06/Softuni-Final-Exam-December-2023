@@ -36,16 +36,16 @@ VALUES
     (4, 'MODERNISM', 'John Grisham');
 
 
-INSERT INTO books(id, added_in_cart, audience_type, favourite, summary, title, author_id)
+INSERT INTO books(id, added_in_cart, audience_type, favourite, summary, title, author_id, price)
 VALUES
     (1, false, 'KIDS', false, '"Cinderella", or "The Little Glass Slipper", is a folk tale with thousands of variants that are told throughout the world. The protagonist is a young girl living in forsaken circumstances that are suddenly changed to remarkable fortune, with her ascension to the throne via marriage.',
-     'Cinderella', 1),
+     'Cinderella', 1, 22.00),
     (2, false, 'ADULT', false, 'Hobbits are a fictional race of people in the novels of J. R. R. Tolkien. About half average human height, Tolkien presented Hobbits as a variety of humanity, or close relatives thereof.',
-     'Hobbit', 2),
+     'Hobbit', 2, 30.00),
     (3, false, 'TEENAGERS', false, 'An American feature film adaptation of the same name as the novel directed by Josh Boone and starring Shailene Woodley, Ansel Elgort, and Nat Wolff was released on June 6, 2014.',
-     'The Fault in Our Stars', 3),
+     'The Fault in Our Stars', 3, 20.00),
     (4, false, 'ADULT', false, 'This one is from 3:3 in the Ecclesiastes, again part of the Old Testament. The anonymous author is a King of Jerusalem who relates and analyses events in his own life. This has resonated strongly with a lot of people.',
-     'A Time to Kill', 4);
+     'A Time to Kill', 4, 25.00);
 
 INSERT INTO books_genres(book_id, genres_id)
 VALUES

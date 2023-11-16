@@ -20,4 +20,9 @@ public class HomeController {
     public String contacts(){
         return "contacts";
     }
+
+    @GetMapping("/after-buying")
+    public String after(){
+        return "after-everything";
+    }
 }

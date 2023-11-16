@@ -1,48 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head th:replace = "commons/fragments::head">
   </head>
-  <body class="all-books-info">
+  <body class="favourites">
     <nav th:replace = "commons/fragments::nav">
     </nav>
 
+    <h1>FAVOURITES</h1>
+
     <section class="all-books">
-      <div class="book">
+      <div class="book" th:each="b : ${booksFavourites}" th:object="${b}">
         <div class="book-info">
-            <h2 class="title-heading">Example Heading</h2>
-        <h3 class="author-heading">Example author</h3>
-        <h4 class="genre-heading">Example genre</h4>
-        <p class="summary-book">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel magni
-          vero nostrum temporibus enim dolore, quae facere error repudiandae a
-          deleniti minima nisi expedita animi praesentium at assumenda autem
-          ratione? Quasi placeat corporis laboriosam, id perferendis repudiandae
-          ab magni 
-        </p>
-        <p class="price">10.00$</p>
-        <button type="button" class="btn btn-dark btn-lg buy-btn">Buy</button>
+          <h2 class="title-heading" th:text="*{title}">Example Heading</h2>
+          <h3 class="author-heading" th:text="*{author}">Example author</h3>
+          <h4 class="genre-heading" th:each="g : *{genres}" th:text="${g}">Example genre</h4>
+          <p class="summary-book" th:text="*{summary}">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel magni
+            vero nostrum temporibus enim dolore, quae facere error repudiandae a
+            deleniti minima nisi expedita animi praesentium at assumenda autem
+            ratione? Quasi placeat corporis laboriosam, id perferendis repudiandae
+            ab magni
+          </p>
+          <a th:href="@{/cart/add-from-favourites/{id}(id = *{id})}" th:unless="*{addedInCart}"  class="btn btn-dark btn-lg buy-btn">Add to cart</a>
         </div>
         <div class="img-book">
-            <img src="/images/default.avif" alt="img-book">
-        </div>
-      </div>
-      <div class="book">
-        <div class="book-info">
-            <h2 class="title-heading">Example Heading</h2>
-        <h3 class="author-heading">Example author</h3>
-        <h4 class="genre-heading">Example genre</h4>
-        <p class="summary-book">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel magni
-          vero nostrum temporibus enim dolore, quae facere error repudiandae a
-          deleniti minima nisi expedita animi praesentium at assumenda autem
-          ratione? Quasi placeat corporis laboriosam, id perferendis repudiandae
-          ab magni 
-        </p>
-        <p class="price">10.00$</p>
-        <button type="button" class="btn btn-dark btn-lg buy-btn">Buy</button>
-        </div>
-        <div class="img-book">
-            <img src="/images/default.avif" alt="img-book">
+          <img src="/images/default.avif" alt="img-book">
         </div>
       </div>
     </section>
