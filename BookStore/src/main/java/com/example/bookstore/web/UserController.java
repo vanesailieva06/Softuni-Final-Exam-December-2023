@@ -50,7 +50,7 @@ public class UserController {
         return "redirect:login";
     }
 
-    @ModelAttribute("register")
+    @ModelAttribute()
     public UserRegisterDto userRegisterDto(Model model){
         return new UserRegisterDto();
     }

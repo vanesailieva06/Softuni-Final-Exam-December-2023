@@ -17,10 +17,9 @@ import java.util.Optional;
 @Service
 public class BookStoreUserDetailsService  implements UserDetailsService {
     private final UserRepository userRepository;
-    private final CurrentUser currentUser;
-    public BookStoreUserDetailsService(UserRepository userRepository, CurrentUser currentUser) {
+//    private final CurrentUser currentUser;
+    public BookStoreUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.currentUser = currentUser;
     }
 
     @Override
@@ -28,10 +27,10 @@ public class BookStoreUserDetailsService  implements UserDetailsService {
         Optional<com.example.bookstore.model.entity.User> user = userRepository
                 .findByUsername(username);
 
-        if (user.isPresent()){
-            currentUser.setUsername(username);
-            currentUser.setId(Objects.requireNonNull(userRepository.findByUsername(username).orElse(null)).getId());
-        }
+//        if (user.isPresent()){
+//            currentUser.setUsername(username);
+//            currentUser.setId(Objects.requireNonNull(userRepository.findByUsername(username).orElse(null)).getId());
+//        }
         return user
                 .map(BookStoreUserDetailsService::map)
                 .orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found!"));
@@ -39,7 +38,7 @@ public class BookStoreUserDetailsService  implements UserDetailsService {
 
     private static UserDetails map(com.example.bookstore.model.entity.User userEntity) {
         return User
-                .withUsername(userEntity.getEmail())
+                .withUsername(userEntity.getUsername())
                 .password(userEntity.getPassword())
                 .authorities(userEntity.getRoles().stream().map(BookStoreUserDetailsService::map).toList())
                 .build();

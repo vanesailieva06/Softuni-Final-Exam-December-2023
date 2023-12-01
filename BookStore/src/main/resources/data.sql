@@ -67,6 +67,6 @@ VALUES
 
 
 
-
+GRANT SELECT ON TABLE bookstore.books TO root;
 
 

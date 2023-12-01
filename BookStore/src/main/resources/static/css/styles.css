@@ -167,7 +167,7 @@ body{
 .add-book-btn{
     margin-top: 18px;
 }
-.all-books{
+#book-section{
     margin-top: 70px;
     display: grid;
    grid-template-columns: repeat(2, 1fr);
@@ -181,6 +181,10 @@ body{
     margin: auto;
     border-radius: 8px;
     height: 640px;
+}
+.search-bar{
+    width: 75%;
+    margin: 26px auto auto;
 }
 .img-book{
     overflow: hidden;

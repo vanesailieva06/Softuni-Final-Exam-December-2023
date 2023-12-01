@@ -25,6 +25,7 @@
                th:errors="*{author}">
             </p>
         </div>
+
         <div class="mb-3">
           <label for="summary" class="form-label text-white">Summary</label>
           <textarea class="form-control" id="summary" name="summary" rows="5" th:field="*{summary}"></textarea>
@@ -55,6 +56,13 @@
             <p class="errors alert alert-danger"  th:if="${#fields.hasErrors('genres')}"
                       th:errors="*{genres}">
         </p>
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label text-white">Price: </label>
+            <input name = "age" th:field="*{price}" type="number" class="form-control" id="age" min="0">
+            <p class="errors alert alert-danger"  th:if="${#fields.hasErrors('price')}"
+               th:errors="*{price}">
+            </p>
         </div>
 <!--          <div class="form-check">-->
 <!--            <input class="form-check-input" type="checkbox" value="" id="romance" checked>-->

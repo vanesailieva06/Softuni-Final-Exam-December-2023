@@ -5,29 +5,37 @@
   <body class="all-books-info">
     <nav th:replace="commons/fragments::nav">
     </nav>
-
+    <form role="search" class="search-bar">
+      <input class="form-control me-2" type="search" id="search-bar" placeholder="Enter title or author of a book" aria-label="Search">
+    </form>
     <section class="all-books">
-      <div class="book" th:each="b : ${books}" th:object="${b}">
-        <div class="book-info">
-            <h2 class="title-heading" th:text="*{title}">Example Heading</h2>
-        <h3 class="author-heading" th:text="*{author}">Example author</h3>
-        <h4 class="genre-heading" th:each="g : *{genres}" th:text="${g}">Example genre</h4>
-        <p class="summary-book" th:text="*{summary}">
+
+      <section id="book-section">
+      <div class="book" id="bookList" th:each="book : ${books}"
+      th:object="${book}">
+        <div class="book-info" id="book-info">
+            <h2 class="title-heading" id="title-heading" th:text = "*{title}">Example Heading</h2>
+        <h3 class="author-heading" id="author-heading" th:text = "*{author}">Example author</h3>
+        <h4 class="genre-heading" id="genre-heading" th:text="*{genres}">Example genre</h4>
+        <p class="summary-book" id="summary" th:text="*{summary}">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel magni
           vero nostrum temporibus enim dolore, quae facere error repudiandae a
           deleniti minima nisi expedita animi praesentium at assumenda autem
           ratione? Quasi placeat corporis laboriosam, id perferendis repudiandae
           ab magni 
         </p>
-          <a th:href="@{/books/favourites/add/{id}(id = *{id})}" th:unless="*{favourites}" class="btn btn-dark btn-lg buy-btn">Add to favourites</a>
+          <a th:href="@{/books/favourites/add/{id}(id = *{id})}" class="btn btn-dark btn-lg buy-btn">Add to favourites</a>
         </div>
-        <div class="img-book">
-            <img src="/images/default.avif" alt="img-book">
+        <div class="img-book" id="img-div">
+            <img src="/images/default.avif" alt="img-book" id="img-book">
         </div>
       </div>
+      </section>
     </section>
 
     <footer th:replace="commons/fragments::footer"></footer>
+    <script th:src="@{/js/search-bar.js}"></script>
+
     <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

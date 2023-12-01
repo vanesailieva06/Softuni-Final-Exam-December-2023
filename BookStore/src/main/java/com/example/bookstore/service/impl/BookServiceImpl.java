@@ -15,7 +15,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,6 +36,7 @@ public class BookServiceImpl implements BookService {
         this.offerRepository = offerRepository;
     }
 
+    @Transactional
     @Override
     public void addBook(BookAddDto bookAddDto) {
         Book book = modelMapper.map(bookAddDto, Book.class);
@@ -42,14 +46,17 @@ public class BookServiceImpl implements BookService {
 
         book.setAuthor(author);
         book.setAddedInCart(false);
+        book.setFavourite(false);
+        Set<Genre> newGenres = new HashSet<>();
         bookAddDto.getGenres().forEach(
                 genreType ->
                 {
                     Genre genre = new Genre();
                     genre.setGenreType(genreType);
-                        book.getGenres().add(genre);
+                    newGenres.add(genre);
                 })
         ;
+        book.setGenres(newGenres);
         bookRepository.save(book);
         genreRepository.saveAll(book.getGenres());
     }
@@ -66,7 +73,7 @@ public class BookServiceImpl implements BookService {
                     BookViewDto map = modelMapper.map(book, BookViewDto.class);
                     map.setFavourites(book.isFavourite());
                     map.setAuthor(book.getAuthor().getName());
-                    map.setGenres(book.getGenres().stream().map(Genre::getGenreType).collect(Collectors.toList()));
+                    map.setGenres(book.toString());
 
                     return map;
 
@@ -113,7 +120,7 @@ public class BookServiceImpl implements BookService {
                     map.setFavourites(book.isFavourite());
                     map.setAddedInCart(book.isAddedInCart());
                     map.setAuthor(book.getAuthor().getName());
-                    map.setGenres(book.getGenres().stream().map(Genre::getGenreType).collect(Collectors.toList()));
+                    map.setGenres(book.getGenres().toString());
 
                     return map;
 

@@ -9,7 +9,7 @@ public class BookViewDto {
 
     private String title;
     private String author;
-    private List<GenreType> genres;
+    private String genres;
     private String summary;
     private Long id;
 
@@ -35,11 +35,11 @@ public class BookViewDto {
         this.author = author;
     }
 
-    public List<GenreType> getGenres() {
+    public String getGenres() {
         return genres;
     }
 
-    public void setGenres(List<GenreType> genres) {
+    public void setGenres(String genres) {
         this.genres = genres;
     }
 
@@ -73,5 +73,12 @@ public class BookViewDto {
 
     public void setAddedInCart(Boolean addedInCart) {
         this.addedInCart = addedInCart;
+    }
+
+    @Override
+    public String toString() {
+        return "BookViewDto{" +
+                "genres='" + genres + '\'' +
+                '}';
     }
 }

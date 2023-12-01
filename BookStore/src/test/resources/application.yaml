@@ -1,0 +1,53 @@
+spring:
+  jpa:
+    # Choose either MySQL 8 or MySQL 5 below
+    # For MySQL 8
+    database-platform: org.hibernate.dialect.HSQLDialect
+    #For MySQL 5
+    #database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: never
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+#mobilele:
+#  default.admin.pass: topsecret
+#  remember.me.key: topsecret
+
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+    profiles:
+      test: TRACE
+
+
+
+#
+#open.exchange.rates:
+#  schema: https
+#  host: dummy
+#  path: /api/latest.json
+#  app_id: test
+#  symbols: EUR,BGN
+#  enabled: false
+
+
+
+mail:
+  bookStore: bookStore@example.com
+  host: localhost
+  port: 3333
+  username: test
+  password: topsecret

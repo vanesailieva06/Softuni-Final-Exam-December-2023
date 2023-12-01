@@ -11,4 +11,6 @@ public interface UserService {
     UserViewDto findById(Long id);
 
     User findByUsername(String username);
+
+    void deleteAll();
 }

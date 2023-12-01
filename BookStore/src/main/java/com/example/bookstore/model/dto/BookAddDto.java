@@ -13,6 +13,7 @@ public class BookAddDto {
     private String summary;
     private AudienceType audienceType;
     private List<GenreType> genres;
+    private BigDecimal price;
 
     public BookAddDto() {
     }
@@ -62,5 +63,15 @@ public class BookAddDto {
 
     public void setGenres(List<GenreType> genres) {
         this.genres = genres;
+    }
+
+
+    @Positive(message = "Positive price")
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }

@@ -24,6 +24,7 @@ public class SecurityConfiguration {
                         ,"/contacts", "/books/all").permitAll()
 //                        .requestMatchers(HttpMethod.GET, "/offer/**").permitAll() authenticated
                         .requestMatchers("/error").permitAll()
+                                .requestMatchers("/books/api").permitAll()
                                 .requestMatchers("/book/add").hasRole(RoleType.ADMIN.name())
                         // all other requests are authenticated.
                         .anyRequest().authenticated()

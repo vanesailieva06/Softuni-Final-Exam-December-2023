@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
-@Table(name = "books")
+@Table(name = "`books`")
 public class Book extends BaseEntity{
     private String title;
     private String summary;
@@ -98,5 +98,12 @@ public class Book extends BaseEntity{
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "genres=" + genres +
+                '}';
     }
 }

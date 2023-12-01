@@ -1,49 +1,54 @@
-spring:
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/bookStore?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
-    username:  ${MYSQL_USER:root}
-    password: ${MYSQL_PASSWORD:Vanesa06}
-  servlet:
-    multipart:
-      max-file-size: 1MB
-      max-request-size: 5MB
-  mvc:
-    hiddenmethod:
-      filter:
-        enabled: true
-  sql:
-    init:
-      mode: never
-  profiles:
-    active: development
 
-  jpa:
-    # Choose either MySQL 8 or MySQL 5 below
-    # For MySQL 8
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    #For MySQL 5
-    #database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    hibernate:
-      ddl-auto: update
-    open-in-view: false
-    properties:
+  spring:
+    datasource:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: "jdbc:mysql://vlibrary.mysql.database.azure.com:3306/bookstore?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
+      username:  ${MYSQL_USER:root}
+      password: ${MYSQL_PASSWORD:Vanesa06}
+    servlet:
+      multipart:
+        max-file-size: 1MB
+        max-request-size: 5MB
+    mvc:
+      hiddenmethod:
+        filter:
+          enabled: true
+    sql:
+      init:
+        mode: never
+    profiles:
+      active: development
+
+    jpa:
+      # Choose either MySQL 8 or MySQL 5 below
+      # For MySQL 8
+      database-platform: org.hibernate.dialect.MySQL8Dialect
+      #For MySQL 5
+      #database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
       hibernate:
-        format_sql: true
-    defer-datasource-initialization: true
-  #Cloudinary Properties
-  #cloudinary:
-  #api-key:
-  #api-secret:
-  #cloud-name:
-#  main:
-#    allow-circular-references: true
-logging:
-  level:
-    org.hibernate.SQL: DEBUG
-    org.hibernate.orm.jdbc.bind: TRACE
-    org.springframework.security: TRACE
+        ddl-auto: update
 
+      open-in-view: false
+      properties:
+        hibernate:
+          format_sql: true
+      defer-datasource-initialization: true
+    #Cloudinary Properties
+    #cloudinary:
+    #api-key:
+    #api-secret:
+    #cloud-name:
+  #  main:
+  #    allow-circular-references: true
+  logging:
+    level:
+      org.hibernate.SQL: DEBUG
+      org.hibernate.orm.jdbc.bind: TRACE
+      org.springframework.security: TRACE
 
-
-
+  mail:
+    bookStore: "bookStore@example.com"
+    host: localhost
+    port: 1025
+    username: ${MAIL_USER:softuni}
+    password: ${MAIL_PASSWORD:softuni}
