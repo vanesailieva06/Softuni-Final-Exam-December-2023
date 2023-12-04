@@ -49,7 +49,7 @@ public class Book extends BaseEntity{
         this.audienceType = audienceType;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER)
     public Set<Genre> getGenres() {
         return genres;
     }
@@ -67,7 +67,7 @@ public class Book extends BaseEntity{
         this.author = author;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "book", cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "book", cascade = CascadeType.REMOVE)
     public Set<Offer> getOffers() {
         return offers;
     }
@@ -76,6 +76,7 @@ public class Book extends BaseEntity{
         this.offers = offers;
     }
 
+    @Column
     public boolean isAddedInCart() {
         return addedInCart;
     }
@@ -84,6 +85,7 @@ public class Book extends BaseEntity{
         this.addedInCart = addedInCart;
     }
 
+    @Column
     public boolean isFavourite() {
         return isFavourite;
     }
@@ -92,6 +94,7 @@ public class Book extends BaseEntity{
         isFavourite = favourite;
     }
 
+    @Column
     public BigDecimal getPrice() {
         return price;
     }
@@ -100,10 +103,10 @@ public class Book extends BaseEntity{
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "genres=" + genres +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Book{" +
+//                "genres=" + genres +
+//                '}';
+//    }
 }

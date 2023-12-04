@@ -15,7 +15,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -69,16 +69,18 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookViewDto> getAll() {
         return bookRepository.findAll()
-                .stream().map(book -> {
-                    BookViewDto map = modelMapper.map(book, BookViewDto.class);
-                    map.setFavourites(book.isFavourite());
-                    map.setAuthor(book.getAuthor().getName());
-                    map.setGenres(book.toString());
-
-                    return map;
-
-                })
+                .stream().map(this::map)
                 .collect(Collectors.toList());
+    }
+
+    private BookViewDto map(Book book) {
+        BookViewDto map = modelMapper.map(book, BookViewDto.class);
+        map.setFavourites(book.isFavourite());
+        map.setAuthor(book.getAuthor().getName());
+        List<String> expectedGenres = new ArrayList<>();
+        book.getGenres().forEach(genre -> expectedGenres.add(genre.getGenreType().name()));
+        map.setGenres(expectedGenres);
+        return map;
     }
 
 
@@ -120,7 +122,9 @@ public class BookServiceImpl implements BookService {
                     map.setFavourites(book.isFavourite());
                     map.setAddedInCart(book.isAddedInCart());
                     map.setAuthor(book.getAuthor().getName());
-                    map.setGenres(book.getGenres().toString());
+                    List<String> expectedGenres = new ArrayList<>();
+                    book.getGenres().forEach(genre -> expectedGenres.add(genre.getGenreType().name()));
+                    map.setGenres(expectedGenres);
 
                     return map;
 
@@ -130,6 +134,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional
     public void buyBook(Long id) {
         bookRepository.deleteById(id);
     }

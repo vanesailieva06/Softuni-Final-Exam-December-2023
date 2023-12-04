@@ -4,6 +4,7 @@ package com.example.bookstore.web;
 import com.example.bookstore.model.entity.User;
 import com.example.bookstore.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,10 @@ public class UserRegistrationTest {
     @Autowired
     private UserRepository userRepository;
 
+    @BeforeEach
+    void setUp(){
+        userRepository.deleteAll();
+    }
     @AfterEach
     void tearDown() {
         userRepository.deleteAll();

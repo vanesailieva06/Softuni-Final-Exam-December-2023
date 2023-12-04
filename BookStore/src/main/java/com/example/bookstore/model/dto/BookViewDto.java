@@ -9,7 +9,7 @@ public class BookViewDto {
 
     private String title;
     private String author;
-    private String genres;
+    private List<String> genres;
     private String summary;
     private Long id;
 
@@ -35,11 +35,11 @@ public class BookViewDto {
         this.author = author;
     }
 
-    public String getGenres() {
+    public List<String> getGenres() {
         return genres;
     }
 
-    public void setGenres(String genres) {
+    public void setGenres(List<String> genres) {
         this.genres = genres;
     }
 

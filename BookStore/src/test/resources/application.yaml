@@ -1,16 +1,21 @@
 spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://localhost:3306/bookstore?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:Vanesa06}
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 5MB
   jpa:
     # Choose either MySQL 8 or MySQL 5 below
     # For MySQL 8
-    database-platform: org.hibernate.dialect.HSQLDialect
     #For MySQL 5
     #database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: create
-    open-in-view: false
-    properties:
-      hibernate:
-        format_sql: true
+      ddl-auto: update
     defer-datasource-initialization: true
   sql:
     init:
@@ -29,8 +34,8 @@ logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
-    profiles:
-      test: TRACE
+#    profiles:
+#      test: DEBUG
 
 
 

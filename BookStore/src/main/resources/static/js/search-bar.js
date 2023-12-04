@@ -46,27 +46,27 @@ const displayBooks = (books) => {
         .join('');
 }
 
-// function createElement(type, parent, content, classes, id, attributes) {
-//     let element = document.createElement(type);
-//     if (content && type !== "input") {
-//         element.textContent = content;
-//     }
-//     if (content && type === "input") {
-//         element.value = content;
-//     }
-//     if (parent) {
-//         parent.appendChild(element);
-//     }
-//     if (id) {
-//         element.id = id;
-//     }
-//     if (classes) {
-//         element.classList.add(...classes);
-//     }
-//     if (attributes) {
-//         for (const key in attributes) {
-//             element.setAttribute(key, attributes[key]);
-//         }
-//     }
-//     return element;
-// }
+function createElement(type, parent, content, classes, id, attributes) {
+    let element = document.createElement(type);
+    if (content && type !== "input") {
+        element.textContent = content;
+    }
+    if (content && type === "input") {
+        element.value = content;
+    }
+    if (parent) {
+        parent.appendChild(element);
+    }
+    if (id) {
+        element.id = id;
+    }
+    if (classes) {
+        element.classList.add(...classes);
+    }
+    if (attributes) {
+        for (const key in attributes) {
+            element.setAttribute(key, attributes[key]);
+        }
+    }
+    return element;
+}

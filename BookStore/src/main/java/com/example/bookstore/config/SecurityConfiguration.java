@@ -1,6 +1,7 @@
 package com.example.bookstore.config;
 
 import com.example.bookstore.model.entity.enums.RoleType;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ public class SecurityConfiguration {
                 authorizeRequests ->
                         authorizeRequests.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         // Allow anyone to see the home page, the registration page and the login form
+                                .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/about"
                         ,"/contacts", "/books/all").permitAll()
 //                        .requestMatchers(HttpMethod.GET, "/offer/**").permitAll() authenticated

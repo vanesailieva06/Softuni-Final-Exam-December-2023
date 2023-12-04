@@ -6,10 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
@@ -32,8 +29,8 @@ public class CartController {
     @GetMapping("/books/buy/{id}")
     public String buyBook(@PathVariable Long id){
         bookService.buyBook(id);
-        if (bookService.findAllAddedInCart().size()==0){
-            return "after-everything";
+        if (bookService.findAllAddedInCart().size() == 0){
+            return "redirect:/after-buying";
         }
         return "redirect:/cart";
     }
