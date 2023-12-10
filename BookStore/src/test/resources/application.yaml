@@ -25,9 +25,10 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
-#mobilele:
-#  default.admin.pass: topsecret
-#  remember.me.key: topsecret
+
+bookstore:
+  default.admin.pass: topsecret
+  remember.me.key: topsecret
 
 
 logging:

@@ -1,6 +1,7 @@
 package com.example.bookstore.config;
 
 import com.example.bookstore.model.entity.enums.RoleType;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -13,8 +14,18 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import java.nio.file.Path;
 
+import static org.springframework.security.authorization.AuthenticatedAuthorizationManager.rememberMe;
+
 @Configuration
 public class SecurityConfiguration {
+
+    private final String rememberMeKey;
+
+    public SecurityConfiguration(
+            @Value("${bookstore.remember.me.key}") String rememberMeKey) {
+        this.rememberMeKey = rememberMeKey;
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.authorizeHttpRequests(
@@ -23,11 +34,15 @@ public class SecurityConfiguration {
                         // Allow anyone to see the home page, the registration page and the login form
                                 .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/about"
-                        ,"/contacts", "/books/all").permitAll()
+                        ,"/contacts", "/books/all", "/learn-more", "/books/science-fiction",
+                                "/books/romance", "/books/comedy",
+                                "/books/horror", "/books/history",
+                                "/books/thriller", "/books/action",
+                                "/books/fantasy").permitAll()
 //                        .requestMatchers(HttpMethod.GET, "/offer/**").permitAll() authenticated
                         .requestMatchers("/error").permitAll()
                                 .requestMatchers("/books/api").permitAll()
-                                .requestMatchers("/book/add").hasRole(RoleType.ADMIN.name())
+                                .requestMatchers("/book/add", "/admin").hasRole(RoleType.ADMIN.name())
                         // all other requests are authenticated.
                         .anyRequest().authenticated()
         )
@@ -39,7 +54,13 @@ public class SecurityConfiguration {
         }).logout(logout ->{
             logout.logoutUrl("/users/logout").logoutSuccessUrl("/")
                     .invalidateHttpSession(true);
-        }).build();
+        }).rememberMe(
+                rememberMe ->
+                        rememberMe
+                                .key(rememberMeKey)
+                                .rememberMeParameter("rememberme")
+                                .rememberMeCookieName("rememberme")
+        ).build();
 
     }
 

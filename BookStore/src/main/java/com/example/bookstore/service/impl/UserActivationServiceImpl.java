@@ -7,6 +7,7 @@ import com.example.bookstore.repository.UserRepository;
 import com.example.bookstore.service.EmailService;
 import com.example.bookstore.service.UserActivationService;
 import com.example.bookstore.service.exception.ObjectNotFoundException;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
@@ -65,5 +66,9 @@ public class UserActivationServiceImpl implements UserActivationService {
         }
 
         return activationCode.toString();
+    }
+
+    private Long getId(UserDetails userDetails){
+        return userRepository.findByUsername(userDetails.getUsername()).orElseThrow().getId();
     }
 }

@@ -1,0 +1,160 @@
+@media (max-width: 900px) {
+    .genres-section{
+        width: 70%;
+        margin: auto;
+    }
+    .why{
+        width: 70%;
+    }
+    .best-selling-img-div{
+        display: none;
+    }
+    .about-us-section{
+        width: 75%;
+    }
+    .learn-more-section{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .div-img img{
+        height: 800px;
+    }
+}
+
+@media (max-width: 600px) and (min-width: 450px){
+    .text-header{
+        display: none;
+    }
+    .about-us-section{
+        width: 80%;
+    }
+    .contact-section{
+        width: 90%;
+    }
+    .profile-section{
+        width: 90%;
+        height: 750px;
+    }
+    #book-section{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .book{
+        width: 80%;
+        height: 700px;
+    }
+    .details-info{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .default-info{
+        width: 100%;
+    }
+    .div-img img{
+        height: 700px;
+    }
+    .learn-more-section{
+        width: 90%;
+    }
+}
+
+@media (max-width: 450px){
+    .text-header{
+        display: none;
+    }
+    .genres-section{
+        width: 95%;
+    }
+    .why-vlibrary{
+        width: 90%;
+    }
+    .best-selling{
+        width: 90%;
+    }
+    .register-form, .login-form, .book-form, .offer-form{
+        width: 75%;
+    }
+    .about-us-section{
+        width: 90%;
+    }
+    .contact-section{
+        width: 90%;
+    }
+    .profile-section{
+        width: 95%;
+        height: 800px;
+    }
+    #book-section{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .book{
+        width: 95%;
+        height: 740px;
+    }
+    .contact-section{
+        flex-direction: column;
+    }
+
+    .details-info{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .default-info{
+        width: 100%;
+    }
+    .why span{
+        display: block;
+    }
+    .div-img img{
+        height: 500px;
+    }
+    .learn-more-section{
+        width: 97%;
+    }
+}
+
+@media (max-width: 800px) and (min-width: 600px){
+    .register-form, .login-form, .book-form, .offer-form{
+        width: 40%;
+    }
+    .contact-section{
+        width: 70%;
+    }
+    .profile-section{
+        width: 70%;
+        height: 750px;
+    }
+    #book-section{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .book{
+        width: 75%;
+    }
+    .default-info{
+        width: 90%;
+        height: 500px;
+    }
+}
+
+@media (max-width: 530px) {
+    .register-form, .login-form, .book-form, .offer-form{
+        width: 60%;
+    }
+}
+
+@media (max-width: 950px) and (min-width: 800px){
+    .contact-section{
+        width: 60%;
+    }
+    .profile-section{
+        height: 750px;
+    }
+
+}
+@media (max-width: 1200px) and (min-width: 800px){
+    .profile-section{
+        width: 60%;
+    }
+    #book-section{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .book{
+        width: 65%;
+    }
+}

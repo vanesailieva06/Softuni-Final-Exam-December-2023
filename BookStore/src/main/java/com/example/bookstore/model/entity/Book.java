@@ -14,10 +14,10 @@ public class Book extends BaseEntity{
     private AudienceType audienceType;
     private Set<Genre> genres;
     private Author author;
-    private Set<Offer> offers;
     private boolean addedInCart;
     private boolean isFavourite;
     private BigDecimal price;
+    private Set<Comment> comments;
     public Book() {
     }
 
@@ -67,14 +67,6 @@ public class Book extends BaseEntity{
         this.author = author;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "book", cascade = CascadeType.REMOVE)
-    public Set<Offer> getOffers() {
-        return offers;
-    }
-
-    public void setOffers(Set<Offer> offers) {
-        this.offers = offers;
-    }
 
     @Column
     public boolean isAddedInCart() {
@@ -103,7 +95,17 @@ public class Book extends BaseEntity{
         this.price = price;
     }
 
-//    @Override
+    @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
+
+    //    @Override
 //    public String toString() {
 //        return "Book{" +
 //                "genres=" + genres +

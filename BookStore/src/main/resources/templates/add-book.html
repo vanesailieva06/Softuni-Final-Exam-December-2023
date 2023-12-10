@@ -8,7 +8,7 @@
 
       </nav>
     <h1 class="mb-5 mt-3 text-center text-white">Add Book</h1>
-    <form class="w-25 m-auto" th:method="post"
+    <form class="book-form m-auto" th:method="post"
     th:action="@{/book/add}"
     th:object="${bookAddDto}">
         <div class="mb-3">
@@ -47,9 +47,11 @@
             <div class="form-group p-3 checkboxGenre">
 
                 <label class="p-2" for="genres">Genres:</label>
+                <div th:each="g : ${T(com.example.bookstore.model.entity.enums.GenreType).values()}">
                 <input class="m-3" type="checkbox" th:field="*{genres}"
-                       th:each="g : ${T(com.example.bookstore.model.entity.enums.GenreType).values()}" id="genres"
+                        id="genres"
                        th:value="${g}" th:text="${g}">
+                </div>
                 <br>
 
             </div>
@@ -64,48 +66,6 @@
                th:errors="*{price}">
             </p>
         </div>
-<!--          <div class="form-check">-->
-<!--            <input class="form-check-input" type="checkbox" value="" id="romance" checked>-->
-<!--            <label class="form-check-label" for="romance">-->
-<!--              Romance-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div class="form-check">-->
-<!--            <input class="form-check-input" type="checkbox" value="" id="horror" checked>-->
-<!--            <label class="form-check-label" for="horror">-->
-<!--              Horror-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div class="form-check">-->
-<!--            <input class="form-check-input" type="checkbox" value="" id="fantasy" checked>-->
-<!--            <label class="form-check-label" for="fantasy">-->
-<!--              Fantasy-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div class="form-check">-->
-<!--            <input class="form-check-input" type="checkbox" value="" id="thriller" checked>-->
-<!--            <label class="form-check-label" for="thriller">-->
-<!--              Thriller-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div class="form-check">-->
-<!--            <input class="form-check-input" type="checkbox" value="" id="history" checked>-->
-<!--            <label class="form-check-label" for="history">-->
-<!--              History-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div class="form-check">-->
-<!--            <input class="form-check-input" type="checkbox" value="" id="action" checked>-->
-<!--            <label class="form-check-label" for="action">-->
-<!--              Action-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div class="form-check">-->
-<!--            <input class="form-check-input" type="checkbox" value="" id="comedy" checked>-->
-<!--            <label class="form-check-label" for="comedy">-->
-<!--              Comedy-->
-<!--            </label>-->
-<!--          </div>-->
         <button type="submit" class="btn btn-primary btn-lg add-book-btn">Submit</button>
       </form>
 

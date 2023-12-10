@@ -17,20 +17,22 @@ import java.util.Optional;
 @Service
 public class BookStoreUserDetailsService  implements UserDetailsService {
     private final UserRepository userRepository;
-//    private final CurrentUser currentUser;
-    public BookStoreUserDetailsService(UserRepository userRepository) {
+    private final CurrentUser currentUser;
+    public BookStoreUserDetailsService(UserRepository userRepository, CurrentUser currentUser) {
         this.userRepository = userRepository;
+        this.currentUser = currentUser;
     }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<com.example.bookstore.model.entity.User> user = userRepository
                 .findByUsername(username);
 
-//        if (user.isPresent()){
-//            currentUser.setUsername(username);
-//            currentUser.setId(Objects.requireNonNull(userRepository.findByUsername(username).orElse(null)).getId());
-//        }
+        if (user.isPresent()){
+            currentUser.setUsername(username);
+            currentUser.setId(Objects.requireNonNull(userRepository.findByUsername(username).orElse(null)).getId());
+        }
         return user
                 .map(BookStoreUserDetailsService::map)
                 .orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found!"));

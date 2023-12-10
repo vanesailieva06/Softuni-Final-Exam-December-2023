@@ -25,4 +25,9 @@ public class HomeController {
     public String after(){
         return "after-everything";
     }
+
+    @GetMapping("/learn-more")
+    public String learnMore(){
+        return "learn-more";
+    }
 }

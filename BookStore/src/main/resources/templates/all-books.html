@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <head th:replace="commons/fragments:: head">
   </head>
   <body class="all-books-info">
@@ -16,15 +16,17 @@
         <div class="book-info" id="book-info">
             <h2 class="title-heading" id="title-heading" th:text = "*{title}">Example Heading</h2>
         <h3 class="author-heading" id="author-heading" th:text = "*{author}">Example author</h3>
-        <h4 class="genre-heading" id="genre-heading" th:text="*{genres}">Example genre</h4>
+        <h4 class="genre-heading" id="genre-heading" th:each="g : *{genres}" th:text="${g.toLowerCase()}">Example genre</h4>
         <p class="summary-book" id="summary" th:text="*{summary}">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel magni
           vero nostrum temporibus enim dolore, quae facere error repudiandae a
           deleniti minima nisi expedita animi praesentium at assumenda autem
           ratione? Quasi placeat corporis laboriosam, id perferendis repudiandae
-          ab magni 
+          ab magni
         </p>
-          <a th:href="@{/books/favourites/add/{id}(id = *{id})}" class="btn btn-dark btn-lg buy-btn">Add to favourites</a>
+          <a sec:authorize="isAuthenticated()" th:href="@{/books/details/{id}(id = *{id})}" class="btn btn-secondary">Details</a>
+          <a sec:authorize="isAuthenticated()" th:href="@{/books/favourites/add/{id}(id = *{id})}" class="btn btn-dark btn-lg buy-btn">Add to favourites</a>
+
         </div>
         <div class="img-book" id="img-div">
             <img src="/images/default.avif" alt="img-book" id="img-book">

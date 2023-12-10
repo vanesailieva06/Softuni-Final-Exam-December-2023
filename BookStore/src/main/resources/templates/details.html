@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="commons/fragments::head">
+</head>
+<body>
+<nav th:replace="commons/fragments::nav"></nav>
+<main class="details">
+
+  <section class="details-info" th:object="${details}">
+    <input type="hidden" name="bookId" id="bookId" th:value="${id}">
+    <div class="default-info">
+      <h2>Title</h2>
+      <p class="title-info" th:text="*{title}">title info</p>
+      <h3>Author</h3>
+      <p class="author-info" th:text="*{author}">author info</p>
+
+      <h4>Genre</h4>
+      <p class="genre-info" th:each="g : *{genres}" th:text="${g}">genre info</p>
+
+      <h4>Summary</h4>
+      <p class="summary-info" th:text="*{summary}">summary info</p>
+
+    </div>
+      <div class="mb-3">
+
+      <div>
+        <!-- Comments submission -->
+        <form id="commentForm" method="POST"
+              th:action="@{/api/comments/{bookId}(bookId=${id})}">
+          <div class="form-group">
+            <h4>Leave a comment (optional) </h4>
+            <label for="message">Message</label>
+            <textarea name="message"
+                      id="message"
+                      cols="30"
+                      rows="4"
+                      class="form-control"
+                      style="background-color: white;"></textarea>
+          </div>
+
+          <div class="form-group">
+            <input type="submit"
+                   class="btn btn-secondary btn-lg"
+                   id="postComment"
+                   value="Post Comment"/>
+          </div>
+        </form>
+      </div>
+
+      <div class="comment-section">
+
+        <span id="commentCtnr"><!-- Comments section, filled in by script --></span>
+      </div>
+      </div>
+    </section>
+</main>
+<footer th:replace="commons/fragments::footer"></footer>
+<script th:src="@{/js/comments.js}"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"
+></script>
+</body>
+</html>

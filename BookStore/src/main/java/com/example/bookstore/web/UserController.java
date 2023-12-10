@@ -3,6 +3,7 @@ package com.example.bookstore.web;
 import com.example.bookstore.model.dto.UserRegisterDto;
 import com.example.bookstore.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -55,7 +56,7 @@ public class UserController {
         return new UserRegisterDto();
     }
 
-    @PostMapping("/users/login-error")
+    @PostMapping("/login-error")
     public String onFailure(
             @ModelAttribute("username") String username,
             Model model) {

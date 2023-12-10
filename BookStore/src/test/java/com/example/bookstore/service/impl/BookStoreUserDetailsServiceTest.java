@@ -4,6 +4,7 @@ import com.example.bookstore.model.entity.Role;
 import com.example.bookstore.model.entity.User;
 import com.example.bookstore.model.entity.enums.RoleType;
 import com.example.bookstore.repository.UserRepository;
+import com.example.bookstore.util.CurrentUser;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,10 +30,12 @@ public class BookStoreUserDetailsServiceTest {
 
     @Mock
     private UserRepository userMockRepository;
+    @Mock
+    private CurrentUser currentUser;
 
     @BeforeEach
     void setUp(){
-        bookStoreUserDetailsService = new BookStoreUserDetailsService(userMockRepository);
+        bookStoreUserDetailsService = new BookStoreUserDetailsService(userMockRepository, currentUser);
     }
 
     @Test

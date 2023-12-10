@@ -4,6 +4,7 @@ import com.example.bookstore.model.dto.BookAddDto;
 import com.example.bookstore.model.dto.BookInCartViewDto;
 import com.example.bookstore.model.dto.BookViewDto;
 import com.example.bookstore.model.entity.Book;
+import com.example.bookstore.model.entity.enums.GenreType;
 
 import java.util.List;
 
@@ -20,6 +21,8 @@ public interface BookService {
 
     Book findById(Long id);
 
+    BookViewDto findBookById(Long id);
+
     List<BookInCartViewDto> findAllAddedInCart();
 
     void addToFavourites(Long id);
@@ -30,4 +33,5 @@ public interface BookService {
 
     void buyAllBooks();
 
+    List<BookViewDto> getBooksContainGenre(GenreType genreType);
 }

@@ -255,21 +255,29 @@ body{
     background-color: #78b180;
 }
 .about-us-section{
-    background-color: #78b180;
+    background-color: rgba(120, 177, 128, 0.62);
     width: 60%;
     margin: auto;
     padding: 40px;
-    border-radius: 8px;
+    border-radius: 6px;
     margin-top: 50px;
 }
 .about-us-section h2{
-    font-size: 45px;
+    font-size: 48px;
     text-align: center;
     margin-bottom: 20px;
+}
+.about-us-section figcaption{
+    font-size: 18px;
+    color: #545454;
 }
 .about-us-section p{
     font-size: 20px;
     line-height: 34px;
+    margin-bottom: 12px;
+}
+.about-us-section figure{
+    text-indent: 30px;
 }
 .contact-section{
     background-color: white;
@@ -287,7 +295,7 @@ body{
 }
 .cart{
     width: 80%;
-    margin: auto;
+    margin: auto auto 15px;
 }
 .books-in{
     margin-bottom: 50px;
@@ -326,4 +334,114 @@ body{
     width: 700px;
     height: 770px;
     margin: auto;
+}
+.best-selling{
+    width: 75%;
+}
+.register-form{
+    width: 25%;
+}
+.login-form{
+    width: 25%;
+}
+.book-form{
+    width: 25%;
+}
+.offer-form{
+    width: 25%;
+}
+.favourites h1{
+    text-align: center;
+    font-size: 50px;
+}
+.table{
+    width: 75%;
+    margin: 120px auto auto;
+    border-radius: 6px;
+}
+.admin-header{
+    text-align: center;
+    font-size: 50px;
+}
+.details{
+    width: 90%;
+    margin: auto;
+    margin-top: 100px;
+}
+.details-info{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.default-info{
+    background-color: rgb(237, 237, 222);
+    padding: 20px;
+    width: 75%;
+    border-radius: 6px;
+    text-align: center;
+}
+.comment-section{
+    background-color: rgba(120, 177, 128, 0.5);
+    border-radius: 6px;
+}
+#commentCtnr{
+    margin: 10px;
+}
+#postComment{
+    margin-bottom: 16px;
+    margin-top: 6px;
+}
+.btn-add-url{
+    margin-top: 6px;
+}
+.default-info{
+    height: 450px;
+}
+#rememberme{
+    width: 6px;
+    text-align: center;
+}
+.form-group{
+    align-self: center;
+    align-items: center;
+    align-content: center;
+}
+.logout{
+    padding: 0;
+}
+.btn-buy-all{
+    margin-top: 18px;
+}
+
+.learn-more-section{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+.learn-more-info{
+    background-color: antiquewhite;
+    line-height: 28px;
+    border-radius: 6px;
+    padding: 20px;
+}
+.learn-more h1{
+    text-align: center;
+    font-size: 46px;
+    margin-bottom: 12px;
+}
+.learn-more{
+    width: 85%;
+    margin: auto;
+}
+.div-img img{
+    border-radius: 6px;
+    height: 850px;
+}
+.invalid-user{
+    width: 70%;
+    margin: auto;
+}
+.checkboxGenre div{
+    display: block;
 }

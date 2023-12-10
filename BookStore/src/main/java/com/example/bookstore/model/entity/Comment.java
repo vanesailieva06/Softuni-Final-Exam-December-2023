@@ -11,10 +11,10 @@ import java.time.LocalDateTime;
 @Table(name = "comments")
 public class Comment extends BaseEntity{
     private LocalDateTime created;
-    private String textContent;
+    private String message;
     private User user;
     private Book book;
-
+    private Boolean approved;
     public Comment() {
     }
 
@@ -28,12 +28,12 @@ public class Comment extends BaseEntity{
     }
 
     @Column(nullable = false)
-    public String getTextContent() {
-        return textContent;
+    public String getMessage() {
+        return message;
     }
 
-    public void setTextContent(String textContent) {
-        this.textContent = textContent;
+    public void setMessage(String textContent) {
+        this.message = textContent;
     }
 
     @ManyToOne
@@ -52,5 +52,13 @@ public class Comment extends BaseEntity{
 
     public void setBook(Book book) {
         this.book = book;
+    }
+
+    public Boolean getApproved() {
+        return approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
     }
 }

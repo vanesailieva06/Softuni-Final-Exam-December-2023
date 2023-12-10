@@ -6,7 +6,7 @@
   <nav th:replace = "commons/fragments::nav">
       </nav>
     <h1 class="mb-5 mt-3 text-center text-white">Register</h1>
-    <form class="w-25 m-auto" th:method = "post"
+    <form class="register-form m-auto" th:method = "post"
     th:action = "@{/users/register}" th:object="${userRegisterDto}">
         <div class="mb-3">
           <label for="username" class="form-label text-white">Username</label>

@@ -7,10 +7,10 @@
       >
       </nav>
     <h1 class="mb-5 mt-3 text-center text-white">Login</h1>
-  <p th:if="${bad_credentials}" class="errors alert alert-danger">
+  <p th:if="${bad_credentials}" class="errors invalid-user alert alert-danger">
       Invalid username or password.
   </p>
-    <form class="w-25 m-auto" th:method="post"
+    <form class="login-form m-auto" th:method="post"
     th:action="@{/users/login}">
         <div class="mb-3">
           <label for="username" class="form-label text-white">Username</label>
@@ -21,6 +21,13 @@
           <input name="password" type="password" class="form-control" id="password">
         </div>
         <button type="submit" class="btn btn-primary btn-lg">Login</button>
+        <div>
+        <label for="rememberme" class="text-white font-weight-bold remember">Remember me</label>
+        <input  id="rememberme"
+                name="rememberme"
+                type= checkbox
+                class="form-control"/>
+        </div>
       </form>
       <footer th:replace = "commons/fragments::footer"> </footer>
     <script

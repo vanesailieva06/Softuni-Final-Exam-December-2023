@@ -23,6 +23,7 @@ public class BookController {
 
     @GetMapping("/add")
     public String addBook(){
+
         return "add-book";
     }
 
@@ -40,6 +41,8 @@ public class BookController {
 
         return "redirect:/";
     }
+
+
     @ModelAttribute
     public BookAddDto bookAddDto(){
         return new BookAddDto();

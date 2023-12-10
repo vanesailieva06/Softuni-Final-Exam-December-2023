@@ -44,7 +44,7 @@ logging:
     org.hibernate.SQL: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
     org.springframework.security: TRACE
-
+    root: info
 mail:
   bookStore: "bookStore@example.com"
   host: localhost
@@ -61,3 +61,7 @@ management:
       base-path: /actuator
       exposure:
         include: "*"
+
+bookstore:
+  default.admin.pass: ${DEFAULT_ADMIN_PASS:topsecret}
+  remember.me.key: ${REMEMBER_ME_KEY:topsecret}

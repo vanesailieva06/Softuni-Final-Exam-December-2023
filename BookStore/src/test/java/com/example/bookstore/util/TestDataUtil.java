@@ -3,14 +3,12 @@ package com.example.bookstore.util;
 import com.example.bookstore.model.entity.Author;
 import com.example.bookstore.model.entity.Book;
 import com.example.bookstore.model.entity.Genre;
-import com.example.bookstore.model.entity.Offer;
 import com.example.bookstore.model.entity.enums.AudienceType;
 import com.example.bookstore.model.entity.enums.GenreType;
 import com.example.bookstore.model.entity.enums.LiteraturePeriods;
 import com.example.bookstore.repository.AuthorRepository;
 import com.example.bookstore.repository.BookRepository;
 import com.example.bookstore.repository.GenreRepository;
-import com.example.bookstore.repository.OfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,8 +24,6 @@ public class TestDataUtil {
     private GenreRepository genreRepository;
     @Autowired
     private AuthorRepository authorRepository;
-    @Autowired
-    private OfferRepository offerRepository;
     public Book createBook(String title){
         Genre genre = new Genre();
 
@@ -50,7 +46,6 @@ public class TestDataUtil {
         book.setGenres(Set.of(genre, genre1));
         book.setAuthor(author);
         book.setPrice(BigDecimal.valueOf(20));
-        book.setOffers(null);
         book.setSummary("test sumarryyyy");
         book.setAudienceType(AudienceType.ADULT);
         book.setTitle(title);
@@ -58,17 +53,10 @@ public class TestDataUtil {
        return bookRepository.save(book);
     }
 
-    public void createOffer(String title){
-        Offer offer = new Offer();
-        offer.setBook(bookRepository.findByTitle(title).orElseThrow());
-        offer.setPrice(BigDecimal.valueOf(20));
-        offerRepository.save(offer);
-    }
     public void cleanUp(){
         bookRepository.deleteAll();
         authorRepository.deleteAll();
         genreRepository.deleteAll();
-        offerRepository.deleteAll();
     }
 }
 

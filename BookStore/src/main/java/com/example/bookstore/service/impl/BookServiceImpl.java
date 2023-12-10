@@ -6,20 +6,18 @@ import com.example.bookstore.model.dto.BookViewDto;
 import com.example.bookstore.model.entity.Author;
 import com.example.bookstore.model.entity.Book;
 import com.example.bookstore.model.entity.Genre;
+import com.example.bookstore.model.entity.enums.GenreType;
 import com.example.bookstore.repository.AuthorRepository;
 import com.example.bookstore.repository.BookRepository;
 import com.example.bookstore.repository.GenreRepository;
-import com.example.bookstore.repository.OfferRepository;
 import com.example.bookstore.service.BookService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -27,13 +25,12 @@ public class BookServiceImpl implements BookService {
     private final ModelMapper modelMapper;;
     private final AuthorRepository authorRepository;
     private final GenreRepository genreRepository;
-    private final OfferRepository offerRepository;
-    public BookServiceImpl(BookRepository bookRepository, ModelMapper modelMapper, AuthorRepository authorRepository, GenreRepository genreRepository, OfferRepository offerRepository) {
+
+    public BookServiceImpl(BookRepository bookRepository, ModelMapper modelMapper, AuthorRepository authorRepository, GenreRepository genreRepository) {
         this.bookRepository = bookRepository;
         this.modelMapper = modelMapper;
         this.authorRepository = authorRepository;
         this.genreRepository = genreRepository;
-        this.offerRepository = offerRepository;
     }
 
     @Transactional
@@ -70,7 +67,7 @@ public class BookServiceImpl implements BookService {
     public List<BookViewDto> getAll() {
         return bookRepository.findAll()
                 .stream().map(this::map)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     private BookViewDto map(Book book) {
@@ -92,7 +89,18 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book findById(Long id) {
-        return bookRepository.findById(id).orElseThrow();
+        return bookRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public BookViewDto findBookById(Long id) {
+        Book currentBook = bookRepository.findById(id).orElseThrow();
+        BookViewDto map = modelMapper.map(currentBook, BookViewDto.class);
+        List<String> genres = currentBook.getGenres().stream().map(genre -> genre.getGenreType().name().toLowerCase())
+                .collect(toList());
+        map.setGenres(genres);
+        map.setAuthor(currentBook.getAuthor().getName());
+        return map;
     }
 
     @Override
@@ -104,7 +112,7 @@ public class BookServiceImpl implements BookService {
                     );
                     return map;
         }
-                ).collect(Collectors.toList());
+                ).collect(toList());
     }
 
     @Override
@@ -129,7 +137,7 @@ public class BookServiceImpl implements BookService {
                     return map;
 
                 })
-                .collect(Collectors.toList());
+                .collect(toList());
 
     }
 
@@ -140,10 +148,34 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    @Transactional
     public void buyAllBooks() {
         bookRepository.findAllByAddedInCartIsTrue().forEach(book -> bookRepository.deleteById(book.getId()));
     }
+
+    @Override
+    public List<BookViewDto> getBooksContainGenre(GenreType genreType) {
+        Genre type = genreRepository.findByGenreType(genreType).orElseThrow();
+        List<Book> collect = bookRepository.findAll().stream().filter((Book book) -> {
+                    boolean contains = false;
+                    for (Genre genre : book.getGenres()) {
+                        if (genre.getGenreType().equals(genreType)){
+                            contains = true;
+                        }
+                    }
+                    return contains;
+        }).toList();
+        return collect.stream()
+                .map((Book b) -> {
+                    BookViewDto map = modelMapper.map(b, BookViewDto.class);
+                    map.setAuthor(b.getAuthor().getName());
+                    List<String> expectedGenres = new ArrayList<>();
+                    b.getGenres().forEach(genre -> expectedGenres.add(genre.getGenreType().name()));
+                    map.setGenres(expectedGenres);
+                    return map;
+                })
+                .collect(toList());
+    }
+
 
     @Override
     @Transactional

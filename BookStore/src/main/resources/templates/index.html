@@ -14,7 +14,7 @@
         <p>
           Find your book and enjoy it! We have a variety of books!
         </p>
-        <button class="btn btn-secondary btn-lg btn-contact">Contact Us</button>
+        <a class="btn btn-secondary btn-lg btn-contact" th:href="@{/contacts}">Contact Us</a>
       </div>
     </div>
   </section>
@@ -24,80 +24,80 @@
 
   <section class="genres-section">
     <div class="row w-85 mx-auto mb-4">
-      <div class="col-sm-3 mb-3 mb-sm-3">
+      <div class="col-lg-6 col-xl-3 mb-3 mb-sm-3">
         <div class="card genres">
           <div class="card-body p-5">
-            <a href="#" class="link-genre"><h5 class="card-title h2">Science fiction</h5>
+            <a th:href="@{/books/science-fiction}" class="link-genre"><h5 class="card-title h2">Science fiction</h5>
               <p class="card-text">Do you like Astrology?</p>
               <i class="fa-solid fa-rocket icon"></i>
             </a>
           </div>
         </div>
       </div>
-      <div class="col-sm-3 mb-3 mb-sm-0">
+      <div class="col-lg-6 col-xl-3 mb-3 mb-sm-3">
         <div class="card genres">
           <div class="card-body p-5">
-            <a href="#" class="link-genre"><h5 class="card-title h2">Romance</h5>
+            <a th:href="@{/books/romance}"  class="link-genre"><h5 class="card-title h2">Romance</h5>
               <p class="card-text">When you are loved!</p>
               <i class="fa-solid fa-heart icon"></i>
             </a>
           </div>
         </div>
       </div>
-      <div class="col-sm-3 mb-3 mb-sm-0">
+      <div class="col-lg-6 col-xl-3 mb-3 mb-sm-3">
         <div class="card genres">
           <div class="card-body p-5">
-            <a href="#" class="link-genre"><h5 class="card-title h2">Horror</h5>
+            <a th:href="@{/books/horror}" class="link-genre"><h5 class="card-title h2">Horror</h5>
               <p class="card-text">You want something scary?</p>
               <i class="fa-solid fa-ghost icon"></i>
             </a>
           </div>
         </div>
       </div>
-      <div class="col-sm-3 mb-3 mb-sm-0">
+      <div class="col-lg-6 col-xl-3 mb-3 mb-sm-3">
         <div class="card genres">
           <div class="card-body p-5">
-            <a href="#" class="link-genre"><h5 class="card-title h2">Fantasy</h5>
+            <a th:href="@{/books/fantasy}" class="link-genre"><h5 class="card-title h2">Fantasy</h5>
               <p class="card-text">Do you have a big fantasy?</p>
               <i class="fa-solid fa-wand-sparkles icon"></i>
             </a>
           </div>
         </div>
       </div>
-      <div class="col-sm-3 mb-3 mb-sm-0">
+      <div class="col-lg-6 col-xl-3 mb-3 mb-sm-3">
         <div class="card genres">
           <div class="card-body p-5">
-            <a href="#" class="link-genre"><h5 class="card-title h2">Thriller</h5>
+            <a th:href="@{/books/thriller}" class="link-genre"><h5 class="card-title h2">Thriller</h5>
               <p class="card-text">You have interesting taste!</p>
               <i class="fa-solid fa-user-secret icon"></i>
             </a>
           </div>
         </div>
       </div>
-      <div class="col-sm-3 mb-3 mb-sm-0">
+      <div class="col-lg-6 col-xl-3 mb-3 mb-sm-3">
         <div class="card genres">
           <div class="card-body p-5">
-            <a href="#" class="link-genre"><h5 class="card-title h2">History</h5>
+            <a th:href="@{/books/history}" class="link-genre"><h5 class="card-title h2">History</h5>
               <p class="card-text">Tell me about the Roman History!</p>
               <i class="fa-solid fa-landmark icon"></i>
             </a>
           </div>
         </div>
       </div>
-      <div class="col-sm-3 mb-3 mb-sm-0">
+      <div class="col-lg-6 col-xl-3 mb-3 mb-sm-3">
         <div class="card genres">
           <div class="card-body p-5">
-            <a href="#" class="link-genre"><h5 class="card-title h2">Action</h5>
+            <a th:href="@{/books/action}" class="link-genre"><h5 class="card-title h2">Action</h5>
               <p class="card-text">Are you a dinamic person?</p>
               <i class="fa-solid fa-gun icon"></i>
             </a>
           </div>
         </div>
       </div>
-      <div class="col-sm-3 mb-3 mb-sm-0">
+      <div class="col-lg-6 col-xl-3 mb-3 mb-sm-3">
         <div class="card genres">
           <div class="card-body p-5">
-            <a href="#" class="link-genre"><h5 class="card-title h2">Comedy</h5>
+            <a th:href="@{/books/comedy}" class="link-genre"><h5 class="card-title h2">Comedy</h5>
               <p class="card-text">You are a funny person!Ha-ha</p>
               <i class="fa-solid fa-masks-theater icon"></i>
             </a>
@@ -106,16 +106,16 @@
       </div>
   </section>
   </div>
-  <div class="card w-75 best-selling">
+  <div class="card best-selling">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 best-selling-img-div">
         <img src="/images/download.jpg" class="img-fluid rounded-start w-100 best-selling-img" alt="...">
       </div>
       <div class="col-md-8 ">
         <div class="card-body">
           <h5 class="card-title h1">Best selling book of all time</h5>
           <p class="card-text fs-5 pb-3">Read more about the best selling book and do not miss the chance to read it and give your opinion to help other users.</p>
-          <button type="button" class="btn btn-secondary btn-lg">Learn more</button>
+          <a th:href="@{/learn-more}" type="button" class="btn btn-secondary btn-lg">Learn more</a>
         </div>
       </div>
     </div>
@@ -123,13 +123,13 @@
 
   <section class="why-vlibrary">
     <div class="why">
-      <h2>Why go with VLibrary?</h2>
+      <h2>Why go with Travel Book?</h2>
       <p>
         Because we know that even the best technology is only as good as the
         people behind it. 24/7 tech support.
       </p>
       <div>
-        <button class="btn contact-btn">Contact Us</button>
+        <a class="btn contact-btn" th:href="@{/contacts}">Contact Us</a>
         <span>Or +880 4664 216</span>
       </div>
     </div>

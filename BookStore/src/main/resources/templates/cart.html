@@ -9,8 +9,8 @@
 
     <main>
         <h1 class="cart-heading">CART</h1>
-      <section class="books-in">
-        <div class="card" style="width: 600px" th:each="book : ${addedBooks}" th:object="${book}">
+      <section id="book-section">
+        <div class="card" th:each="book : ${addedBooks}" th:object="${book}">
             <img src="/images/default.avif" class="card-img-top" alt="card-img">
             <div class="card-body">
               <h5 class="card-title" th:text="*{title}">Example title</h5>

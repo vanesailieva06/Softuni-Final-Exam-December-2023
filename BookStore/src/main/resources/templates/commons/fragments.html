@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment = "head">
+  <meta name="_csrf" th:content="${_csrf.token}"/>
+  <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
@@ -16,12 +18,14 @@
   />
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+
 </head>
 <body>
 <nav class="navbar bg-transparent border-body" th:fragment="nav">
   <div class="container">
-    <a class="navbar-brand logo" href="#"
-    ><span>VLibrary</span>
+    <a class="navbar-brand logo" href="/"
+    ><span>Travel Book</span>
       <img
               src="/images/—Pngtree—open book decoration illustration_4603005.png"
               alt="logo"
@@ -46,7 +50,7 @@
     >
       <div class="offcanvas-header">
         <a class="navbar-brand logo" href="#"
-        ><span>VLibrary</span>
+        ><span>Travel Book</span>
           <img
                   src="/images/—Pngtree—open book decoration illustration_4603005.png"
                   alt="logo"
@@ -66,42 +70,37 @@
             <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/users/register}"
+            <a class="nav-link active" aria-current="page" sec:authorize="!isAuthenticated()" th:href="@{/users/register}"
             >Register</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/users/login}"
+            <a class="nav-link active" aria-current="page" sec:authorize="!isAuthenticated()" th:href="@{/users/login}"
             >Login</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/admin}"
+            <a class="nav-link active" aria-current="page" sec:authorize="hasRole('ADMIN')" th:href="@{/admin}"
             >Admin</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/book/add}"
+            <a class="nav-link active" aria-current="page"  sec:authorize="hasRole('ADMIN')" th:href="@{/book/add}"
             >Add Book</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/offer/add}"
-            >Add Offer</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/cart}"
+            <a class="nav-link active" aria-current="page" sec:authorize="isAuthenticated()" th:href="@{/cart}"
             >Cart</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/books/favourites}"
+            <a class="nav-link active" aria-current="page" sec:authorize="isAuthenticated()" th:href="@{/books/favourites}"
             >Favourites</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/users/profile/{id}(id = ${@currentUser.id})}"
+            <a class="nav-link active" aria-current="page" sec:authorize="isAuthenticated()" th:href="@{/users/profile/{id}(id = ${@currentUser.id})}"
             >Profile</a
             >
           </li>
@@ -118,29 +117,18 @@
           <!-- <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li> -->
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/offers/all}"
-            >All Offers</a
-            >
-          </li>
 
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" th:href="@{/books/all}"
             >All Books</a
             >
           </li>
+
+          <form sec:authorize="isAuthenticated()" th:method="post"
+                th:action="@{/users/logout}">
+            <input type="submit" class="btn logout" value="Logout"/>
+          </form>
         </ul>
-        <form class="d-flex mt-3" role="search">
-          <input
-                  class="form-control me-2 search-bar"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">
-            Search
-          </button>
-        </form>
       </div>
     </div>
   </div>
@@ -150,7 +138,7 @@
   <div class="container-fluid text-center">
     <div class="h5 text-white footer-info">
       <a class="navbar-brand logo logo-footer" href="#"
-      ><span>VLibrary</span> <img src="/images/—Pngtree—open book decoration illustration_4603005.png" alt="logo" class="logo-img">
+      ><span>Travel Book</span> <img src="/images/—Pngtree—open book decoration illustration_4603005.png" alt="logo" class="logo-img">
       </a>
 
       <div class="follow-us">
