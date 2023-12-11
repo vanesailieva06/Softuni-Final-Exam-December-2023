@@ -14,6 +14,7 @@ public class User extends BaseEntity{
     private String password;
     private String email;
     private Set<Role> roles;
+    private Set<Comment> comments;
     public User() {
     }
 
@@ -70,5 +71,13 @@ public class User extends BaseEntity{
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

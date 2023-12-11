@@ -1,9 +1,6 @@
 package com.example.bookstore.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -45,7 +42,7 @@ public class Comment extends BaseEntity{
         this.user = user;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     public Book getBook() {
         return book;
     }
