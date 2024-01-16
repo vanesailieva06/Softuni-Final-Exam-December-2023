@@ -1,20 +1,18 @@
 package com.example.bookstore.service.scheduler;
 
-import com.example.bookstore.service.UserActivationService;
+import com.example.bookstore.repository.BookRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 
 public class ActivationLinCleanupScheduler {
-    private final UserActivationService userActivationService;
+    private final BookRepository bookRepository;
 
 
-    public ActivationLinCleanupScheduler(UserActivationService userActivationService) {
-        this.userActivationService = userActivationService;
+    public ActivationLinCleanupScheduler(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
     @Scheduled(cron = "0 0 0 * * *")
     public void cleanUp() {
-        //System.out.println("Trigger cleanup of activation links. " + LocalDateTime.now());
-        // TODO.
-        userActivationService.cleanUpObsoleteActivationLinks();
+        System.out.printf("There are %d books in the database.", bookRepository.count());
     }
 }
