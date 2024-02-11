@@ -55,7 +55,7 @@ mail:
 
 management:
   server:
-    port: 8081
+    port: 12121
   endpoints:
     web:
       base-path: /actuator
