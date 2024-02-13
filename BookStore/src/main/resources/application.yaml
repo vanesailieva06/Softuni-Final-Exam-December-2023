@@ -65,3 +65,4 @@ management:
 bookstore:
   default.admin.pass: ${DEFAULT_ADMIN_PASS:topsecret}
   remember.me.key: ${REMEMBER_ME_KEY:topsecret}
+
