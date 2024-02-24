@@ -1,9 +1,9 @@
 spring:
     datasource:
       driverClassName: com.mysql.cj.jdbc.Driver
-      url: "jdbc:mysql://localhost:3306/bookstore?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
-      username:  ${MYSQL_USER:root}
-      password: ${MYSQL_PASSWORD:Vanesa06}
+      username: ${vanesa}
+      password: ${Vanesa06}
+      url: jdbc:mysql://vlibrary.mysql.database.azure.com:3306/db?createDatabaseIfNotExist=true
     servlet:
       multipart:
         max-file-size: 1MB
