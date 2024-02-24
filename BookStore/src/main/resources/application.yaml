@@ -1,8 +1,8 @@
 spring:
     datasource:
       driverClassName: com.mysql.cj.jdbc.Driver
-      username: ${vanesa}
-      password: ${Vanesa06}
+      username: vanesa
+      password: v.H.i.2006
       url: jdbc:mysql://vlibrary.mysql.database.azure.com:3306/db?createDatabaseIfNotExist=true
     servlet:
       multipart:
