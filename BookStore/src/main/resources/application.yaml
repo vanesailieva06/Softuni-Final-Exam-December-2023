@@ -1,9 +1,10 @@
 spring:
     datasource:
       driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://vLibrary.mysql.database.azure.com:3306/db?createDatabaseIfNotExist=true
       username: vanesa
       password: v.H.i.2006
-      url: jdbc:mysql://vlibrary.mysql.database.azure.com:3306/db?createDatabaseIfNotExist=true
+
     servlet:
       multipart:
         max-file-size: 1MB
